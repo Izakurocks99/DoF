@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea802058452cb5b4ea3a4e802042afe3, type: 3}
+  m_Name: Basic
+  m_EditorClassIdentifier: 
+  cardName: Test
+  description: Harmless lil boi
+  art: {fileID: 21300000, guid: 125c2c50427e269479a0ac5a97e2575f, type: 3}
+  manaCost: 0
+  attack: 1
+  health: 1
