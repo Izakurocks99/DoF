@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Card : MonoBehaviour {
+public class CombatCard : MonoBehaviour {
 
-    public CardScriptableObj cardSO;
+    public CombatCardScriptableObj cardSO;
 
     public Vector2 boardPos;
 
     public SpriteRenderer cardImage;
     public TextMeshPro attackDamage;
-    public TextMeshPro healthPoints;
+    public TextMeshPro manaCost;
     public 
 
 	// Use this for initialization
@@ -20,7 +20,7 @@ public class Card : MonoBehaviour {
         cardImage.sprite = cardSO.art;
         attackDamage.GetComponent<TextMeshPro>();
         attackDamage.text = cardSO.attack.ToString();
-        healthPoints.text = cardSO.health.ToString();
+        manaCost.text = cardSO.manaCost.ToString();
     }
 	
 	// Update is called once per frame

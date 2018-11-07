@@ -7,7 +7,7 @@ public class CardSpawner : MonoBehaviour {
     [SerializeField] float cardSpacing;
     [SerializeField] Vector2 boardSize;
     [SerializeField] GameObject cardGO;
-    [SerializeField] GameObject combatCardGO;
+    [SerializeField] GameObject playerCardGO;
 
     Vector2 cardSize = Vector2.zero;
     Vector2 startposition = Vector2.zero;
@@ -20,7 +20,7 @@ public class CardSpawner : MonoBehaviour {
     int entryPosIndex, exitPosIndex;
 
     [SerializeField]
-    int defaultWeight, forwardWeight; //moving forward is lower so that more cards will spawn
+    int defaultWeight = 0, forwardWeight = 0; //moving forward is lower so that more cards will spawn
 
     // Use this for initialization
     void Start () {
@@ -47,10 +47,11 @@ public class CardSpawner : MonoBehaviour {
 
         //get entry index
         entryPosIndex = Random.Range(0, (int)boardSize.y);
-        Instantiate(combatCardGO, CardPositionList[entryPosIndex], Quaternion.identity); //spawn card
-
+        Instantiate(cardGO, CardPositionList[entryPosIndex], Quaternion.identity); //spawn card
         //move to starting point and start creating path
         transform.position = (CardPositionList[entryPosIndex]);
+        //SpawnPlayer
+        Instantiate(playerCardGO, transform.position + new Vector3(0,0,-1), Quaternion.identity);
         StartCoroutine(CreatePath());
     }
 
@@ -69,7 +70,6 @@ public class CardSpawner : MonoBehaviour {
                 //check if up got spawn
                 if (transform.position.y + cardSize.y < totalHeight * 0.5f)
                 {
-                    Debug.Log("UP");
                     newPos = new Vector2(transform.position.x, transform.position.y + cardSize.y);
                     transform.position = newPos;
                     //set down weight to 0 so that you dont move backwards
@@ -80,7 +80,6 @@ public class CardSpawner : MonoBehaviour {
                     //check if right got space
                     if (transform.position.x + cardSize.x < totalWidth * 0.5f)
                     {
-                        Debug.Log("RIGHT");
                         newPos = new Vector2(transform.position.x + cardSize.x, transform.position.y);
                         transform.position = newPos;
                         //reset weights
@@ -97,7 +96,6 @@ public class CardSpawner : MonoBehaviour {
                 //check if down got space
                 if (transform.position.y - cardSize.y > -totalHeight * 0.5f)
                 {
-                    Debug.Log("DOWN");
                     newPos = new Vector2(transform.position.x, transform.position.y - cardSize.y);
                     transform.position = newPos;
                     //set up weight to 0 so that you dont move backwards
@@ -108,7 +106,6 @@ public class CardSpawner : MonoBehaviour {
                     //check if right got space
                     if (transform.position.x + cardSize.x < totalWidth * 0.5f)
                     {
-                        Debug.Log("RIGHT");
                         newPos = new Vector2(transform.position.x + cardSize.x, transform.position.y);
                         transform.position = newPos;
                         //reset weights
@@ -125,16 +122,10 @@ public class CardSpawner : MonoBehaviour {
                 //check if right got space
                 if (transform.position.x + cardSize.x < totalWidth * 0.5f)
                 {
-                    Debug.Log("RIGHT");
                     newPos = new Vector2(transform.position.x + cardSize.x, transform.position.y );
                     transform.position = newPos;
                     //reset weights
                     downDirWeight = upDirWeight = defaultWeight;
-                }
-                else
-                {
-                    Instantiate(combatCardGO, CardPositionList[entryPosIndex], Quaternion.identity); //spawn card
-                    yield break;
                 }
             }
 
