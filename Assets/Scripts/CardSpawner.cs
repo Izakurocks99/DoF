@@ -51,7 +51,10 @@ public class CardSpawner : MonoBehaviour {
         //move to starting point and start creating path
         transform.position = (CardPositionList[entryPosIndex]);
         //SpawnPlayer
-        Instantiate(playerCardGO, transform.position + new Vector3(0,0,-1), Quaternion.identity);
+        if (!playerCardGO)
+            Instantiate(playerCardGO, transform.position + new Vector3(0, 0, -1), Quaternion.identity);
+        else
+            playerCardGO.transform.position = transform.position + new Vector3(0, 0, -1);
         StartCoroutine(CreatePath());
     }
 
