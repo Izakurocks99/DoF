@@ -130,6 +130,10 @@ public class CardSpawner : MonoBehaviour {
                     //reset weights
                     downDirWeight = upDirWeight = defaultWeight;
                 }
+                else
+                {
+                    yield break;
+                }
             }
 
             Instantiate(cardGO, transform.position, Quaternion.identity);
