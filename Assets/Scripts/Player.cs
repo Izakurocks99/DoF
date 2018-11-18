@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    public Board board = null;
     [SerializeField]
-    Image healthBar;
+    Image healthBar = null;
     [SerializeField]
-    Image manaBar;
+    Image manaBar = null;
 
 
     public float maxHunger;
@@ -20,6 +21,14 @@ public class Player : MonoBehaviour {
     public float maxManaPoints;
     public float currManaPoints;
 
+    public int boardIndex;
+
+    [SerializeField]
+    float moveSpeed = 0f;
+    bool moving = false;
+    float movepercent = 0;
+    Vector3 endPos;
+    BoxCollider collisionBox;
 
     // Use this for initialization
     void Start () {
@@ -27,14 +36,16 @@ public class Player : MonoBehaviour {
         //currHealthPoints = maxHealthPoints;
         //currManaPoints = maxManaPoints;
 
-        healthBar.fillAmount = currHealthPoints / maxHealthPoints;
-        manaBar.fillAmount = currManaPoints/ maxManaPoints;
+        UpdateHealthBar();
+        UpdateManaBar();
 
+        collisionBox = GetComponent<BoxCollider>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (moving)
+            Move();
 	}
 
     void UpdateHealthBar()
@@ -47,4 +58,26 @@ public class Player : MonoBehaviour {
         manaBar.fillAmount = currManaPoints / maxManaPoints;
     }
 
+    public void MoveToBoardPos(int boardPos)
+    {
+        if (!moving)
+        {
+            boardIndex = boardPos;
+            endPos = board.CardPositionList[boardIndex];
+            moving = true;
+            collisionBox.enabled = false;
+        }
+    }
+
+    void Move()
+    {
+        movepercent += moveSpeed * Time.deltaTime;
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, endPos, movepercent);
+        if (movepercent >= 1f)
+        {
+            collisionBox.enabled = true;
+            movepercent = 0;
+            moving = false;
+        }
+    }
 }

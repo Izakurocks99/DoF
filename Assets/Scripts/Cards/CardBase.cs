@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardBase : MonoBehaviour {
-
-    public bool flipped = false; //faced down?
-    bool flipping = false; //faced down?
-    float flipHeight; //how high it flips, use force instead?
-
-    [SerializeField]
-    float flipSpeed; //time taken to flip
-    float fliptime;
     
-    [SerializeField]
-    Transform endTransform;
+    public Board board = null;
 
-    Quaternion endRotation;
-
+    public int boardIndex = 0;
+    CardFlip flipper = null;
+    public Player player = null;
     // Use this for initialization
     void Start () {
-        
+        flipper = GetComponent<CardFlip>();
+        board = FindObjectOfType<Board>();
 	}
 	
 	// Update is called once per frame
@@ -29,30 +22,28 @@ public class CardBase : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
-        if (flipping)
-        {
-            fliptime += Time.deltaTime * flipSpeed;
-
-            transform.rotation = Quaternion.Lerp(transform.rotation, endRotation, fliptime);
-
-            if (fliptime >= 1f)
-            {
-                transform.rotation = endRotation;
-                flipping = false;
-            }
-        }
     }
 
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && CheckBesidePlayer())
         {
-            endRotation = endTransform.transform.rotation;
-            flipping = true;
-            fliptime = 0;
-
-            flipped = !flipped;
+            if (!flipper.flipped)
+                flipper.Flip();
+            else
+                player.MoveToBoardPos(boardIndex);
         }
+    }
+
+    bool CheckBesidePlayer()
+    {
+        if(player.boardIndex + board.boardSize.y == boardIndex 
+            || player.boardIndex - board.boardSize.y == boardIndex
+            || player.boardIndex + 1 == boardIndex
+            || player.boardIndex -1 == boardIndex)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65169433868609970}
   - component: {fileID: 54747912015065134}
   - component: {fileID: 114814513157591324}
+  - component: {fileID: 114040544319853876}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 6
+  m_Constraints: 38
   m_CollisionDetection: 0
 --- !u!65 &65169433868609970
 BoxCollider:
@@ -142,6 +143,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114040544319853876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439152583772436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a69b9cf0c398054886a4eced5a500d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipped: 0
+  flipSpeed: 2
+  endTransform: {fileID: 4556021259629996}
 --- !u!114 &114814513157591324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8758af491b69c40a2c68230785d881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flipped: 0
-  flipSpeed: 1
-  endTransform: {fileID: 4556021259629996}
+  boardIndex: 0

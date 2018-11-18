@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23944640099064110}
   - component: {fileID: 65633597589671254}
   - component: {fileID: 114178103124999174}
+  - component: {fileID: 114588548578686466}
   - component: {fileID: 54211716392737872}
   m_Layer: 0
   m_Name: Player
@@ -129,7 +130,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &65633597589671254
 BoxCollider:
@@ -154,12 +155,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d159f6528732046b0a6983a58dca47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
   maxHunger: 10
-  currHunger: 0
+  currHunger: 5
   maxHealthPoints: 10
-  currHealthPoints: 0
+  currHealthPoints: 5
   maxManaPoints: 10
-  currManaPoints: 0
+  currManaPoints: 5
+  boardIndex: 0
+--- !u!114 &114588548578686466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842119212442356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8758af491b69c40a2c68230785d881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boardIndex: 0
 --- !u!212 &212411201060945566
 SpriteRenderer:
   m_ObjectHideFlags: 1

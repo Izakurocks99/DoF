@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StatBars : MonoBehaviour {
 
-    enum PlayerStats
+    public enum PlayerStats
     {
         NONE,
         HEALTH,
@@ -15,7 +15,7 @@ public class StatBars : MonoBehaviour {
     }
 
     [SerializeField] Player player;
-    [SerializeField] PlayerStats stat;
+    [SerializeField] PlayerStats stat = PlayerStats.NONE;
     [SerializeField] Image statBar;
 
 	// Use this for initialization
