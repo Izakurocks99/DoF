@@ -828,7 +828,7 @@ Prefab:
       objectReference: {fileID: 586941989}
     - target: {fileID: 1842119212442356, guid: c8a044b3265e64e4fa762f87a981acc5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 33189865128601428, guid: c8a044b3265e64e4fa762f87a981acc5,
         type: 2}
@@ -838,7 +838,7 @@ Prefab:
     - target: {fileID: 114178103124999174, guid: c8a044b3265e64e4fa762f87a981acc5,
         type: 2}
       propertyPath: moveSpeed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 54211716392737872, guid: c8a044b3265e64e4fa762f87a981acc5,
         type: 2}
@@ -1132,6 +1132,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114814513157591324, guid: f84e0d92a388407448bec321f318f6d6,
+        type: 2}
+      propertyPath: enemyTokens.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4860201281672232, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1168,6 +1173,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114814513157591324, guid: f84e0d92a388407448bec321f318f6d6,
+        type: 2}
+      propertyPath: enemyTokens.Array.data[0]
+      value: 
+      objectReference: {fileID: 1372522947529386, guid: 59c0a4c5d484a074e8982e13679c6e62,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
   m_IsPrefabAsset: 0
@@ -1210,6 +1221,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 33603098215229260, guid: 59c0a4c5d484a074e8982e13679c6e62,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 33742470278200846, guid: 59c0a4c5d484a074e8982e13679c6e62,
         type: 2}
       propertyPath: m_Mesh
@@ -1234,11 +1250,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 33603098215229260, guid: 59c0a4c5d484a074e8982e13679c6e62,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1372522947529386, guid: 59c0a4c5d484a074e8982e13679c6e62, type: 2}
       propertyPath: m_IsActive

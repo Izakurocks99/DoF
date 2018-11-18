@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     public float currManaPoints;
 
     public int boardIndex;
+    public bool inCombat;
 
     [SerializeField]
     float moveSpeed = 0f;

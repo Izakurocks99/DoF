@@ -54,9 +54,7 @@ public class Board : MonoBehaviour
         entryPosIndex = Random.Range(0, (int)boardSize.x);
         GameObject go = Instantiate(cardGO, CardPositionList[entryPosIndex], Quaternion.identity); //spawn card
         CardBase cardBase = go.GetComponent<CardBase>();
-        cardBase.boardIndex = entryPosIndex;
-        cardBase.player = playerCardGO.GetComponent<Player>();
-        cardBase.board = this;
+        cardBase.InitCard(this, entryPosIndex, playerCardGO.GetComponent<Player>(), CardType.Entry);
         //move to starting point and start creating path
         transform.position = (CardPositionList[entryPosIndex]);
         //MovePlayer
@@ -80,6 +78,7 @@ public class Board : MonoBehaviour
         int cardIndex = entryIndex;
         int leftDirWeight = defaultWeight, rightDirWeight = defaultWeight;
         int dir;
+        CardBase lastCard = null;
 
         while (true)
         {
@@ -103,7 +102,7 @@ public class Board : MonoBehaviour
                     }
                     else
                     {
-                        yield break;
+                         break;
                     }
                 }
             }
@@ -126,7 +125,7 @@ public class Board : MonoBehaviour
                     }
                     else
                     {
-                        yield break;
+                         break;
                     }
                 }
             }
@@ -140,17 +139,18 @@ public class Board : MonoBehaviour
                 }
                 else
                 {
-                    yield break;
+                     break;
                 }
             }
 
             GameObject go = Instantiate(cardGO, transform.position, Quaternion.identity);
             CardBase cardBase = go.GetComponent<CardBase>();
-            cardBase.boardIndex = cardIndex;
-            cardBase.player = playerCardGO.GetComponent<Player>();
-            cardBase.board = this;
+            cardBase.InitCard(this, cardIndex, playerCardGO.GetComponent<Player>(), CardType.NONE);
+            lastCard = cardBase;
             yield return new WaitForSeconds(0.25f);
         }
+        lastCard.InitCard(this, cardIndex, playerCardGO.GetComponent<Player>(), CardType.Exit);
+        yield break;
     }
 
     bool MoveVertical(bool up) //returns true if there is space

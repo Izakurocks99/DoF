@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 23480445481481520}
   - component: {fileID: 65486322310536262}
   - component: {fileID: 54542689678703446}
+  - component: {fileID: 114540800780067836}
   m_Layer: 0
   m_Name: EnemyCard
   m_TagString: Untagged
@@ -312,7 +313,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!65 &65486322310536262
 BoxCollider:
@@ -552,6 +553,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114540800780067836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372522947529386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a1e50706b74114e8e6710719e97ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSO: {fileID: 11400000, guid: 1bde494ed314a8742a53a2282a921ac2, type: 2}
+  boardPos: {x: 0, y: 0}
+  cardImage: {fileID: 212783506448047880}
+  attackDamage: {fileID: 114411458019271908}
+  healthPoints: {fileID: 114471471300602056}
 --- !u!212 &212098643895573916
 SpriteRenderer:
   m_ObjectHideFlags: 1

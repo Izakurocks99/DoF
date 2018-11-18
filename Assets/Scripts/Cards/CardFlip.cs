@@ -15,6 +15,13 @@ public class CardFlip : MonoBehaviour {
     Transform endTransform = null;
     Quaternion endRotation;
 
+    CardBase cardBase =null;
+
+    private void Start()
+    {
+        cardBase = gameObject.GetComponent<CardBase>();
+    }
+
     private void FixedUpdate()
     {
 
@@ -28,6 +35,8 @@ public class CardFlip : MonoBehaviour {
             {
                 transform.rotation = endRotation;
                 flipping = false;
+                fliptime = 0;
+                cardBase.Reveal();
             }
         }
     }
