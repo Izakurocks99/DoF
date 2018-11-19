@@ -40,7 +40,7 @@ public class Board : MonoBehaviour
         {
             for (int x = 0; x < boardSize.x; ++x)
             {
-                startposition = new Vector2(-totalWidth * 0.5f + cardSize.x * 0.5f,
+                startposition = (Vector2)transform.position + new Vector2(-totalWidth * 0.5f + cardSize.x * 0.5f,
                                             -totalHeight * 0.5f + cardSize.y * 0.5f); //- half of width/height + cardsize
 
                 Vector2 cardPos = startposition + new Vector2(x * cardSize.x, y * cardSize.y); //get pos using x and y
