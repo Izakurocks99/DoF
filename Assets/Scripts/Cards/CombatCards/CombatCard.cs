@@ -13,7 +13,7 @@ public class CombatCard : MonoBehaviour {
     public SpriteRenderer cardImage;
     public TextMeshPro attackDamage;
     public TextMeshPro manaCost;
-    public 
+    
 
 	// Use this for initialization
 	void Start () {
