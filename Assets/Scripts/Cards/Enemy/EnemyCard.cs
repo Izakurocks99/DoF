@@ -13,7 +13,8 @@ public class EnemyCard : MonoBehaviour {
     public SpriteRenderer cardImage;
     public TextMeshPro attackDamage;
     public TextMeshPro healthPoints;
-    public 
+
+    public int attack, health;
 
 	// Use this for initialization
 	void Start () {
@@ -21,10 +22,16 @@ public class EnemyCard : MonoBehaviour {
         attackDamage.GetComponent<TextMeshPro>();
         attackDamage.text = cardSO.attack.ToString();
         healthPoints.text = cardSO.health.ToString();
+
+        attack = cardSO.attack;
+        health = cardSO.health;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
 	}
 }

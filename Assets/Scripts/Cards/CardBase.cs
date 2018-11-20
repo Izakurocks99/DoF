@@ -24,6 +24,8 @@ public class CardBase : MonoBehaviour
 
     public List<GameObject> enemyTokens;
 
+    GameObject enemyObj;
+    bool revealed =false;
     // Use this for initialization
     void Start()
     {
@@ -34,7 +36,11 @@ public class CardBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(cardType == CardType.Enemy && revealed&& !enemyObj )
+        {
+            cardType = CardType.NONE;
+            player.inCombat = false;
+        }
     }
 
     public void InitCard(Board board, int boardindex, Player player, CardType type)
@@ -88,7 +94,8 @@ public class CardBase : MonoBehaviour
             case CardType.Enemy:
                 player.inCombat = true;
                 int index = Random.Range(0, enemyTokens.Count);
-                Instantiate(enemyTokens[index],board.CardPositionList[boardIndex],Quaternion.identity);
+                enemyObj = Instantiate(enemyTokens[index],board.CardPositionList[boardIndex],Quaternion.identity);
+                revealed = true;
                 break;
             default:
                 break;

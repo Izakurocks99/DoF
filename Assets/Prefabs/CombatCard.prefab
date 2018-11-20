@@ -94,13 +94,14 @@ GameObject:
   - component: {fileID: 65101166235005422}
   - component: {fileID: 54913933945828948}
   - component: {fileID: 114598584280014268}
+  - component: {fileID: 114933870119320460}
   m_Layer: 0
   m_Name: CombatCard
-  m_TagString: Untagged
+  m_TagString: Combat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1892213875135062
 GameObject:
   m_ObjectHideFlags: 1
@@ -125,7 +126,7 @@ Transform:
   m_GameObject: {fileID: 1537472163227292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0.55}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4805492092933850}
   - {fileID: 4569504140141894}
@@ -140,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 1238198795127662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.299999, y: -2.2999995, z: 0}
-  m_LocalScale: {x: 0.29999992, y: 0.29999992, z: 0}
+  m_LocalScale: {x: 0.29999992, y: 0.29999992, z: 1}
   m_Children:
   - {fileID: 224560833567629788}
   m_Father: {fileID: 4397882076824908}
@@ -168,7 +169,7 @@ Transform:
   m_GameObject: {fileID: 1892213875135062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.2999995, y: -2.2999995, z: 0}
-  m_LocalScale: {x: 0.29999992, y: 0.29999992, z: 0}
+  m_LocalScale: {x: 0.29999992, y: 0.29999992, z: 1}
   m_Children:
   - {fileID: 224304566515309072}
   m_Father: {fileID: 4397882076824908}
@@ -456,6 +457,10 @@ MonoBehaviour:
   cardImage: {fileID: 212848677437916470}
   attackDamage: {fileID: 114726562892665760}
   manaCost: {fileID: 114224384411798230}
+  player: 0
+  enemy: 0
+  hand: {fileID: 0}
+  handIndex: 0
 --- !u!114 &114726562892665760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -569,6 +574,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114933870119320460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565376490105630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68583053ec369041bc5cc1ef752e059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardOffset: {x: 0, y: 0, z: -1}
 --- !u!212 &212628245192981978
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -729,7 +746,7 @@ RectTransform:
   m_GameObject: {fileID: 1366390467484592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4805492092933850}
   m_RootOrder: 0
@@ -747,7 +764,7 @@ RectTransform:
   m_GameObject: {fileID: 1558206040392982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4569504140141894}
   m_RootOrder: 0

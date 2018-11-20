@@ -52,6 +52,7 @@ public class PlayerHand : MonoBehaviour {
 
         if (drawCard)
         {
+            handSize++;
             StartCoroutine(DrawCard(drawAmount));
             drawCard = false;
         }
@@ -68,6 +69,10 @@ public class PlayerHand : MonoBehaviour {
                 handCards.Add(go);
                 go.transform.position = handCardPos[handCards.Count - 1];
                 go.SetActive(true);
+                CombatCard cc = go.GetComponent<CombatCard>();
+                cc.hand = this;
+                cc.handIndex = handCards.Count - 1;
+
             }
             else
             {
@@ -76,5 +81,17 @@ public class PlayerHand : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         yield break;
+    }
+
+    public void RemoveCard(int index)
+    {
+        handSize--;
+        handCards.RemoveAt(index);
+
+        for (int i =0;i < handSize;++i)
+        {
+            handCards[i].transform.position = handCardPos[i];
+            handCards[i].GetComponent<CombatCard>().handIndex = i;
+        }
     }
 }

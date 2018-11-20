@@ -31,6 +31,9 @@ public class Player : MonoBehaviour {
     Vector3 endPos;
     BoxCollider collisionBox;
 
+    [SerializeField]
+    PlayerHand hand;
+
     // Use this for initialization
     void Start () {
         //currHunger = maxHunger;
@@ -47,7 +50,10 @@ public class Player : MonoBehaviour {
 	void Update () {
         if (moving)
             Move();
-	}
+
+        UpdateHealthBar();
+        UpdateManaBar();
+    }
 
     void UpdateHealthBar()
     {
@@ -67,6 +73,7 @@ public class Player : MonoBehaviour {
             endPos = board.CardPositionList[boardIndex];
             moving = true;
             collisionBox.enabled = false;
+            //hand.drawCard = true;
         }
     }
 

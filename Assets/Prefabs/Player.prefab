@@ -39,28 +39,27 @@ GameObject:
   - component: {fileID: 23944640099064110}
   - component: {fileID: 65633597589671254}
   - component: {fileID: 114178103124999174}
-  - component: {fileID: 114588548578686466}
   - component: {fileID: 54211716392737872}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4215886496427490
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1119098791326292}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -0.55}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0}
   m_Children: []
   m_Father: {fileID: 4649252683241684}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4649252683241684
 Transform:
   m_ObjectHideFlags: 1
@@ -130,7 +129,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!65 &65633597589671254
 BoxCollider:
@@ -155,27 +154,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d159f6528732046b0a6983a58dca47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  board: {fileID: 0}
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   maxHunger: 10
   currHunger: 5
   maxHealthPoints: 10
-  currHealthPoints: 5
+  currHealthPoints: 10
   maxManaPoints: 10
-  currManaPoints: 5
+  currManaPoints: 10
   boardIndex: 0
---- !u!114 &114588548578686466
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1842119212442356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8758af491b69c40a2c68230785d881, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boardIndex: 0
+  inCombat: 0
+  moveSpeed: 3
+  hand: {fileID: 0}
 --- !u!212 &212411201060945566
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -211,7 +202,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ccd9ef8564b04f4485b5e54a16df6e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: acdca8f24a786c149a66364ae02c98d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
