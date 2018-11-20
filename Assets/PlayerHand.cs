@@ -12,6 +12,8 @@ public class PlayerHand : MonoBehaviour {
     int handSize;
     [SerializeField]
     int drawAmount;
+    [SerializeField]
+    Graveyard grave;
 
     [SerializeField]
     GameObject handCardArea;
@@ -23,14 +25,14 @@ public class PlayerHand : MonoBehaviour {
     public float cardSpacing = 0;
 
     float cardWidth = 0;
-    float cardHeighth =0;
+    float cardHeight =0;
     
    
     // Use this for initialization
     void Start ()
     {
         cardWidth = handCardArea.transform.lossyScale.x;
-        cardHeighth = handCardArea.transform.lossyScale.y;
+        cardHeight = handCardArea.transform.lossyScale.y;
 
         float totalWidth = (cardWidth + cardSpacing * 2) * handSizeMax;
 
@@ -61,10 +63,16 @@ public class PlayerHand : MonoBehaviour {
         for (int i=0;i < amount;++i)
         {
             GameObject go = deck.DrawCard();
-            handCards.Add(go);
-            go.transform.position = handCardPos[handCards.Count-1];
-            go.SetActive(true);
-
+            if (handCards.Count < handSizeMax)
+            {
+                handCards.Add(go);
+                go.transform.position = handCardPos[handCards.Count - 1];
+                go.SetActive(true);
+            }
+            else
+            {
+                grave.AddtoGrave(go);
+            }
             yield return new WaitForSeconds(0.1f);
         }
         yield break;

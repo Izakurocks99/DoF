@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114094464253595490}
   - component: {fileID: 114651994080952744}
   m_Layer: 0
-  m_Name: Cube 1
+  m_Name: HandCardArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,9 +17,11 @@ public class PlayerDeck : MonoBehaviour {
     GameObject combatCard;
     [SerializeField]
     List<GameObject> deck;
+    [SerializeField]
+    Graveyard graveyard;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         deck = new List<GameObject>();
 
         foreach (DeckCards var in deckInit)
@@ -57,6 +59,13 @@ public class PlayerDeck : MonoBehaviour {
         {
             GameObject go = deck[0];
             deck.RemoveAt(0);
+
+            if(deck.Count == 0)
+            {
+                deck = graveyard.GetGrave();
+                ShuffleDeck();
+            }
+
             return go;
         }
         return null;
