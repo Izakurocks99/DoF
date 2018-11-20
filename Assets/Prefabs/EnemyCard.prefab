@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 114540800780067836}
   m_Layer: 0
   m_Name: EnemyCard
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -569,6 +569,8 @@ MonoBehaviour:
   cardImage: {fileID: 212783506448047880}
   attackDamage: {fileID: 114411458019271908}
   healthPoints: {fileID: 114471471300602056}
+  attack: 0
+  health: 0
 --- !u!212 &212098643895573916
 SpriteRenderer:
   m_ObjectHideFlags: 1

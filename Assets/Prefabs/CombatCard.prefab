@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1892213875135062
 GameObject:
   m_ObjectHideFlags: 1
@@ -457,10 +457,9 @@ MonoBehaviour:
   cardImage: {fileID: 212848677437916470}
   attackDamage: {fileID: 114726562892665760}
   manaCost: {fileID: 114224384411798230}
-  player: 0
-  enemy: 0
   hand: {fileID: 0}
   handIndex: 0
+  player: {fileID: 0}
 --- !u!114 &114726562892665760
 MonoBehaviour:
   m_ObjectHideFlags: 1

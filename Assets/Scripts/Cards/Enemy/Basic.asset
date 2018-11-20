@@ -14,6 +14,5 @@ MonoBehaviour:
   cardName: Test
   description: Harmless lil boi
   art: {fileID: 21300000, guid: 125c2c50427e269479a0ac5a97e2575f, type: 3}
-  manaCost: 0
   attack: 1
   health: 1
