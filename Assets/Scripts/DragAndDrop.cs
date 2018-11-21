@@ -14,10 +14,12 @@ public class DragAndDrop : MonoBehaviour
 
     [SerializeField]
     Vector3 cardOffset;
+
+    CombatCard theCard;
+
     // Use this for initialization
     void Start()
     {
-
     }
 
     void Update()
@@ -42,8 +44,12 @@ public class DragAndDrop : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             if (getTarget)
+            {
                 getTarget.GetComponent<Collider>().enabled = true;
+                theCard.reset = true;
+            }
             isMouseDragging = false;
+
         }
 
         //Is mouse Moving
@@ -68,8 +74,12 @@ public class DragAndDrop : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
         {
-            if (gameObject == hit.collider.gameObject)
-                return gameObject;
+            if (hit.collider.gameObject.GetComponent<CombatCard>())
+            {
+
+                theCard = hit.collider.gameObject.GetComponent<CombatCard>();
+                return hit.collider.gameObject;
+            }
         }
         return null;
     }

@@ -9,6 +9,8 @@ public class PlayerHand : MonoBehaviour {
     [SerializeField]
     int handSizeMax;
     [SerializeField]
+    int startHandSize;
+    [SerializeField]
     int handSize;
     [SerializeField]
     int drawAmount;
@@ -44,7 +46,7 @@ public class PlayerHand : MonoBehaviour {
             Instantiate(handCardArea, cardPos, Quaternion.identity);
             handCardPos.Add(cardPos);
         }
-        StartCoroutine(DrawCard(handSize));
+        StartCoroutine(DrawCard(startHandSize));
     }
 	
 	// Update is called once per frame
@@ -52,7 +54,6 @@ public class PlayerHand : MonoBehaviour {
 
         if (drawCard)
         {
-            handSize++;
             StartCoroutine(DrawCard(drawAmount));
             drawCard = false;
         }
@@ -60,12 +61,18 @@ public class PlayerHand : MonoBehaviour {
 
     IEnumerator DrawCard(int amount)
     {
-        yield return new WaitForSeconds(0.5f);
         for (int i=0;i < amount;++i)
         {
             GameObject go = deck.DrawCard();
+            if(!go)
+            {
+                deck.ResetDeck();
+                go = deck.DrawCard();
+            }
+            yield return new WaitForSeconds(0.5f);
             if (handCards.Count < handSizeMax)
             {
+                handSize++;
                 handCards.Add(go);
                 go.transform.position = handCardPos[handCards.Count - 1];
                 go.SetActive(true);
@@ -93,5 +100,9 @@ public class PlayerHand : MonoBehaviour {
             handCards[i].transform.position = handCardPos[i];
             handCards[i].GetComponent<CombatCard>().handIndex = i;
         }
+    }
+    public void ResetPos(int index)
+    {
+        handCards[index].transform.position = handCardPos[index];
     }
 }

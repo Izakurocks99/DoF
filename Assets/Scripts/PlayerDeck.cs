@@ -34,7 +34,7 @@ public class PlayerDeck : MonoBehaviour {
             }
         }
 
-        ShuffleDeck();
+        ShuffleDeck(deck);
 	}
 	
 	// Update is called once per frame
@@ -42,14 +42,14 @@ public class PlayerDeck : MonoBehaviour {
 		
 	}
 
-    void ShuffleDeck()
+    void ShuffleDeck(List<GameObject> in_deck)
     {
-        for(int i = 0; i< deck.Count;++i)
+        for(int i = 0; i< in_deck.Count;++i)
         {
-            GameObject temp = deck[i];
-            int randomIndex = Random.Range(i, deck.Count);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = temp;
+            GameObject temp = in_deck[i];
+            int randomIndex = Random.Range(i, in_deck.Count);
+            in_deck[i] = in_deck[randomIndex];
+            in_deck[randomIndex] = temp;
         }
     }
 
@@ -59,15 +59,18 @@ public class PlayerDeck : MonoBehaviour {
         {
             GameObject go = deck[0];
             deck.RemoveAt(0);
-
-            if(deck.Count == 0)
-            {
-                deck = graveyard.GetGrave();
-                ShuffleDeck();
-            }
-
             return go;
         }
         return null;
+    }
+
+    public void ResetDeck()
+    {
+        List<GameObject> temp = graveyard.GetGrave();        
+        ShuffleDeck(temp);
+        foreach(GameObject var in temp)
+        {
+            deck.Add(var);
+        }
     }
 }

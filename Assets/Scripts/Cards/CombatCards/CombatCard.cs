@@ -19,6 +19,8 @@ public class CombatCard : MonoBehaviour {
     public int handIndex;
     public Player player;
 
+    public bool reset;
+
 	// Use this for initialization
 	void Start () {
         cardImage.sprite = cardSO.art;
@@ -45,6 +47,15 @@ public class CombatCard : MonoBehaviour {
             gameObject.SetActive(false);
             hand.RemoveCard(handIndex);
             hand.drawCard = true;
+            
+        }
+        else
+        {
+            if (reset)
+            {
+                hand.ResetPos(handIndex);
+                reset = false;
+            }
         }
     }
 
