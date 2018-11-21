@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     public Board board = null;
     [SerializeField]
@@ -12,14 +13,12 @@ public class Player : MonoBehaviour {
     Image manaBar = null;
 
 
-    public float maxHunger;
-    public float currHunger;
-           
-    public float maxHealthPoints;
-    public float currHealthPoints;
-           
-    public float maxManaPoints;
-    public float currManaPoints;
+    [SerializeField] float maxHunger;
+    [SerializeField] float currHunger;
+    [SerializeField] float maxHealthPoints;
+    [SerializeField] float currHealthPoints;
+    [SerializeField] float maxManaPoints;
+    [SerializeField] float currManaPoints;
 
     public int boardIndex;
     public bool inCombat;
@@ -35,7 +34,8 @@ public class Player : MonoBehaviour {
     PlayerHand hand;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         //currHunger = maxHunger;
         //currHealthPoints = maxHealthPoints;
         //currManaPoints = maxManaPoints;
@@ -45,23 +45,55 @@ public class Player : MonoBehaviour {
 
         collisionBox = GetComponent<BoxCollider>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (moving)
             Move();
+    }
 
+    public void TakeDamage(float damage)
+    {
+        currHealthPoints -= damage;
         UpdateHealthBar();
-        UpdateManaBar();
     }
 
     void UpdateHealthBar()
     {
+        if (currHealthPoints > maxHealthPoints)
+        {
+            currHealthPoints = maxHealthPoints;
+        }
+        else if (currHealthPoints < 0)
+        {
+            currHealthPoints = 0;
+        }
         healthBar.fillAmount = currHealthPoints / maxHealthPoints;
     }
-    
+
+    public bool CastSpell(float manaCost)
+    {
+        if (currManaPoints >= manaCost)
+        {
+
+            currManaPoints -= manaCost;
+            UpdateManaBar();
+            return true;
+        }
+        return false;
+    }
+
     void UpdateManaBar()
     {
+        if (currManaPoints > maxManaPoints)
+        {
+            currManaPoints = maxManaPoints;
+        }
+        else if (currManaPoints < 0)
+        {
+            currManaPoints = 0;
+        }
         manaBar.fillAmount = currManaPoints / maxManaPoints;
     }
 

@@ -8,11 +8,9 @@ public class CombatCard : MonoBehaviour {
 
     public CombatCardScriptableObj cardSO;
 
-    public Vector2 boardPos;
-
     public SpriteRenderer cardImage;
-    public TextMeshPro attackDamage;
-    public TextMeshPro manaCost;
+    public TextMeshPro atkTxt;
+    public TextMeshPro manaTxt;
 
     Graveyard grave;
     public PlayerHand hand;
@@ -21,15 +19,21 @@ public class CombatCard : MonoBehaviour {
 
     public bool reset;
 
+    int attackdmg;
+    int mana;
+
 	// Use this for initialization
 	void Start () {
         cardImage.sprite = cardSO.art;
-        attackDamage.GetComponent<TextMeshPro>();
-        attackDamage.text = cardSO.attack.ToString();
-        manaCost.text = cardSO.manaCost.ToString();
+        atkTxt.GetComponent<TextMeshPro>();
+        atkTxt.text = cardSO.attack.ToString();
+        manaTxt.text = cardSO.manaCost.ToString();
 
         grave = FindObjectOfType<Graveyard>();
         player = FindObjectOfType<Player>();
+
+        attackdmg = cardSO.attack;
+        mana = cardSO.manaCost;
     }
 	
 	// Update is called once per frame
@@ -42,7 +46,7 @@ public class CombatCard : MonoBehaviour {
         if(collision.gameObject.tag == "Enemy" && UseCard())
         {
             EnemyCard enemy = collision.gameObject.GetComponent<EnemyCard>();
-            enemy.health -= cardSO.attack;
+            enemy.health -= attackdmg;
             grave.AddtoGrave(gameObject);
             gameObject.SetActive(false);
             hand.RemoveCard(handIndex);
@@ -61,14 +65,6 @@ public class CombatCard : MonoBehaviour {
 
     bool UseCard()
     {
-        if (player.currManaPoints >= cardSO.manaCost)
-        {
-            player.currManaPoints -= cardSO.manaCost;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return player.CastSpell(mana);
     }
 }

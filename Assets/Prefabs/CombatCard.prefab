@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 65101166235005422}
   - component: {fileID: 54913933945828948}
   - component: {fileID: 114598584280014268}
-  - component: {fileID: 114933870119320460}
   m_Layer: 0
   m_Name: CombatCard
   m_TagString: Combat
@@ -453,13 +452,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardSO: {fileID: 11400000, guid: 4705030bcc4008a46a09d87dc5b35657, type: 2}
-  boardPos: {x: 0, y: 0}
   cardImage: {fileID: 212848677437916470}
-  attackDamage: {fileID: 114726562892665760}
-  manaCost: {fileID: 114224384411798230}
+  atkTxt: {fileID: 114726562892665760}
+  manaTxt: {fileID: 114224384411798230}
   hand: {fileID: 0}
   handIndex: 0
   player: {fileID: 0}
+  reset: 0
 --- !u!114 &114726562892665760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -573,18 +572,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
---- !u!114 &114933870119320460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565376490105630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68583053ec369041bc5cc1ef752e059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardOffset: {x: 0, y: 0, z: -1}
 --- !u!212 &212628245192981978
 SpriteRenderer:
   m_ObjectHideFlags: 1

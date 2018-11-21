@@ -27,14 +27,14 @@ public class PlayerHand : MonoBehaviour {
     public float cardSpacing = 0;
 
     float cardWidth = 0;
-    float cardHeight =0;
+    //float cardHeight =0;
     
    
     // Use this for initialization
     void Start ()
     {
         cardWidth = handCardArea.transform.lossyScale.x;
-        cardHeight = handCardArea.transform.lossyScale.y;
+        //cardHeight = handCardArea.transform.lossyScale.y;
 
         float totalWidth = (cardWidth + cardSpacing * 2) * handSizeMax;
 
