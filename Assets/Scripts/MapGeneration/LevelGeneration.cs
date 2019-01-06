@@ -6,27 +6,30 @@ public class LevelGeneration : MonoBehaviour
 {
 
     [SerializeField]
-    Vector2 worldSize = new Vector2(4, 4);
+    Vector2 worldCenter = new Vector2(4, 4);
     Room[,] roomArray;
     List<Vector2> takenPositions = new List<Vector2>();
-    public int gridSizeX, gridSizeY, numberOfRooms =20;
+    int gridSizeX, gridSizeY;
+    [SerializeField]
+    int numberOfRooms = 20;
+    [SerializeField]
+    float cardSpacing = 0.1f;
 
     public GameObject roomObj;
 
     // Use this for initialization
     void Start()
     {
-        if (numberOfRooms >= (worldSize.x * 2) * (worldSize.y * 2))
+        if (numberOfRooms >= (worldCenter.x * 2) * (worldCenter.y * 2))
         {
-            numberOfRooms = (int)((worldSize.x * 2) * (worldSize.y * 2));
+            numberOfRooms = (int)((worldCenter.x * 2) * (worldCenter.y * 2));
         }
 
-        gridSizeX = (int)worldSize.x;
-        gridSizeY = (int)worldSize.y;
+        gridSizeX = (int)worldCenter.x;
+        gridSizeY = (int)worldCenter.y;
 
         CreateRooms();
-        SetRoomDoors();
-        DrawMap();
+        StartCoroutine(DrawMap());
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class LevelGeneration : MonoBehaviour
         float randomCompare = 0.2f, randomCompareStart = 0.2f, randomCompareEnd = 0.01f;
         for (int i = 0; i < numberOfRooms - 1; ++i)
         {
+            //more chance to branch as i increases
             float randomPerc = (float)i / (float)numberOfRooms - 1f;
             randomCompare = Mathf.Lerp(randomCompareStart, randomCompareEnd, randomPerc);
 
@@ -54,20 +58,12 @@ public class LevelGeneration : MonoBehaviour
             //20% to branch out(using randomCompare) if more than one neighbour
             if (NumberOfNeighbors(checkPos, takenPositions) > 1 && Random.value > randomCompare)
             {
-                //TODO: Not sure why needs to iterate here, check
-                int iterations = 0;
-                do
-                {
-                    checkPos = SelectiveNewPosition();
-                    iterations++;
-                } while (NumberOfNeighbors(checkPos, takenPositions) > 1 && iterations < 100);
-                if (iterations >= 50)
-                    print("error: could not create with fewer neighbors than : " + NumberOfNeighbors(checkPos, takenPositions));
+                checkPos = SelectiveNewPosition();
             }
 
             //add position into array
             roomArray[(int)checkPos.x + gridSizeX, (int)checkPos.y + gridSizeY] = new Room(checkPos, RoomTypes.Normal);
-            takenPositions.Insert(0, checkPos);
+            takenPositions.Add(checkPos);
         }
     }
 
@@ -158,53 +154,7 @@ public class LevelGeneration : MonoBehaviour
         return ret;
     }
 
-    void SetRoomDoors()
-    {
-        for (int x = 0; x < ((gridSizeX * 2)); x++)
-        {
-            for (int y = 0; y < ((gridSizeY * 2)); y++)
-            {
-                if (roomArray[x, y] == null)
-                {
-                    continue;
-                }
-                if (y - 1 < 0)
-                { //check above
-                    roomArray[x, y].doorBot = false;
-                }
-                else
-                {
-                    roomArray[x, y].doorBot = (roomArray[x, y - 1] != null);
-                }
-                if (y + 1 >= gridSizeY * 2)
-                { //check bellow
-                    roomArray[x, y].doorTop = false;
-                }
-                else
-                {
-                    roomArray[x, y].doorTop = (roomArray[x, y + 1] != null);
-                }
-                if (x - 1 < 0)
-                { //check left
-                    roomArray[x, y].doorLeft = false;
-                }
-                else
-                {
-                    roomArray[x, y].doorLeft = (roomArray[x - 1, y] != null);
-                }
-                if (x + 1 >= gridSizeX * 2)
-                { //check right
-                    roomArray[x, y].doorRight = false;
-                }
-                else
-                {
-                    roomArray[x, y].doorRight = (roomArray[x + 1, y] != null);
-                }
-            }
-        }
-    }
-
-    void DrawMap()
+    IEnumerator DrawMap()
     {
         foreach(Room room in roomArray)
         {
@@ -214,9 +164,13 @@ public class LevelGeneration : MonoBehaviour
             }
 
             Vector2 drawPos = room.gridPos;
-            drawPos.x *= roomObj.transform.lossyScale.x;
-            drawPos.y *= roomObj.transform.lossyScale.y;
+            drawPos.x *= (roomObj.transform.lossyScale.x + cardSpacing);
+            drawPos.y *= (roomObj.transform.lossyScale.y + cardSpacing);
             Instantiate(roomObj, drawPos, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+
         }
+        yield break;
+
     }
 }

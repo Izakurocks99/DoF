@@ -12,7 +12,6 @@ public enum RoomTypes
 public class Room{
     public Vector2 gridPos;
     public RoomTypes type;
-    public bool doorTop, doorBot, doorLeft, doorRight;
     public Room(Vector2 _roomPos,RoomTypes _type)
     {
         gridPos = _roomPos;

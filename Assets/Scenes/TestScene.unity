@@ -113,55 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &50792682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 50792684}
-  - component: {fileID: 50792683}
-  m_Layer: 0
-  m_Name: CardSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &50792683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50792682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb7eef5345f22044a1e730c66ddbe76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardSpacing: 0.1
-  boardSize: {x: 3, y: 3}
-  cardGO: {fileID: 1439152583772436, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
-  playerCardGO: {fileID: 1700734133}
-  CardPositionList: []
-  entryPosIndex: 0
-  exitPosIndex: 0
-  defaultWeight: 3
-  forwardWeight: 1
---- !u!4 &50792684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 50792682}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68602346
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4649252683241684, guid: c8a044b3265e64e4fa762f87a981acc5, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1842119212442356, guid: c8a044b3265e64e4fa762f87a981acc5, type: 2}
       propertyPath: m_IsActive
@@ -990,7 +941,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4860201281672232, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 95854342163357874, guid: f84e0d92a388407448bec321f318f6d6,
         type: 2}
@@ -1009,6 +960,10 @@ Prefab:
     - target: {fileID: 1439152583772436, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556021259629996, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95854342163357874, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
@@ -1103,10 +1058,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53191f71f7094014c999366d49bd4aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldSize: {x: 4, y: 4}
-  gridSizeX: 0
-  gridSizeY: 0
+  worldCenter: {x: 4, y: 4}
   numberOfRooms: 20
+  cardSpacing: 0.1
   roomObj: {fileID: 1439152583772436, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
 --- !u!4 &1329702800
 Transform:
@@ -1119,7 +1073,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356630262
 GameObject:
@@ -1312,11 +1266,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1656177875}
   m_CullTransparentMesh: 0
---- !u!1 &1700734133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1842119212442356, guid: c8a044b3265e64e4fa762f87a981acc5,
-    type: 2}
-  m_PrefabInternal: {fileID: 607371449}
 --- !u!1 &1954115461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439152583772436, guid: f84e0d92a388407448bec321f318f6d6,
