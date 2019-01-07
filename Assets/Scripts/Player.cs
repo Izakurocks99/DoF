@@ -6,21 +6,17 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-    public Board board = null;
-    [SerializeField]
-    Image healthBar = null;
-    [SerializeField]
-    Image manaBar = null;
+    public LevelGeneration board = null;
 
+    //Player stats
+    public float maxHunger;
+    public float currHunger;
+    public float maxHealthPoints;
+    public float currHealthPoints;
+    public float maxManaPoints;
+    public float currManaPoints;
 
-    [SerializeField] float maxHunger;
-    [SerializeField] float currHunger;
-    [SerializeField] float maxHealthPoints;
-    [SerializeField] float currHealthPoints;
-    [SerializeField] float maxManaPoints;
-    [SerializeField] float currManaPoints;
-
-    public int boardIndex;
+    public Vector2 boardIndex;
     public bool inCombat;
 
     [SerializeField]
@@ -40,8 +36,8 @@ public class Player : MonoBehaviour
         //currHealthPoints = maxHealthPoints;
         //currManaPoints = maxManaPoints;
 
-        UpdateHealthBar();
-        UpdateManaBar();
+        //Move to start
+        gameObject.transform.position = board.GetStartingPos();
 
         collisionBox = GetComponent<BoxCollider>();
     }
@@ -53,14 +49,9 @@ public class Player : MonoBehaviour
             Move();
     }
 
-    public void TakeDamage(float damage)
+    public void ModifyHealth(float value)
     {
-        currHealthPoints -= damage;
-        UpdateHealthBar();
-    }
-
-    void UpdateHealthBar()
-    {
+        currHealthPoints += value;
         if (currHealthPoints > maxHealthPoints)
         {
             currHealthPoints = maxHealthPoints;
@@ -69,23 +60,22 @@ public class Player : MonoBehaviour
         {
             currHealthPoints = 0;
         }
-        healthBar.fillAmount = currHealthPoints / maxHealthPoints;
     }
 
     public bool CastSpell(float manaCost)
     {
-        if (currManaPoints >= manaCost)
+        if (currManaPoints >= manaCost) //can cast
         {
 
-            currManaPoints -= manaCost;
-            UpdateManaBar();
+            ModifyMana(-manaCost);
             return true;
         }
-        return false;
+        return false; //cannot cast
     }
 
-    void UpdateManaBar()
+    public void ModifyMana(float value)
     {
+        currManaPoints += value;
         if (currManaPoints > maxManaPoints)
         {
             currManaPoints = maxManaPoints;
@@ -94,15 +84,14 @@ public class Player : MonoBehaviour
         {
             currManaPoints = 0;
         }
-        manaBar.fillAmount = currManaPoints / maxManaPoints;
     }
 
-    public void MoveToBoardPos(int boardPos)
+    public void MoveToBoardPos(Vector2 boardPos)
     {
         if (!moving)
         {
             boardIndex = boardPos;
-            endPos = board.CardPositionList[boardIndex];
+            endPos = board.BoardToWorldPos(boardIndex);
             moving = true;
             collisionBox.enabled = false;
             //hand.drawCard = true;

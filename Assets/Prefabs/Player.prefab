@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4215886496427490
 Transform:
   m_ObjectHideFlags: 1
@@ -163,7 +163,7 @@ MonoBehaviour:
   currHealthPoints: 10
   maxManaPoints: 10
   currManaPoints: 10
-  boardIndex: 0
+  boardIndex: {x: 0, y: 0}
   inCombat: 0
   moveSpeed: 3
   hand: {fileID: 0}

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardFlip : MonoBehaviour {
+public class CardFlip : MonoBehaviour
+{
 
     public bool flipped = false; //faced down?
     bool flipping = false; //faced down?
@@ -15,7 +16,7 @@ public class CardFlip : MonoBehaviour {
     Transform endTransform = null;
     Quaternion endRotation;
 
-    CardBase cardBase =null;
+    CardBase cardBase = null;
 
     private void Start()
     {

@@ -16,7 +16,10 @@ public class LevelGeneration : MonoBehaviour
     float cardSpacing = 0.1f;
 
     public GameObject roomObj;
+    public GameObject playerPrefab;
+    Player player;
 
+    List<GameObject> rooms = new List<GameObject>();
     // Use this for initialization
     void Start()
     {
@@ -42,7 +45,7 @@ public class LevelGeneration : MonoBehaviour
     {
         roomArray = new Room[gridSizeX * 2, gridSizeY * 2];
         roomArray[gridSizeX, gridSizeY] = new Room(Vector2.zero, RoomTypes.Start);
-        takenPositions.Insert(0, Vector2.zero); //add starting room into takenpos
+        takenPositions.Add(Vector2.zero); //add starting room into takenpos
         Vector2 checkPos = Vector2.zero;
 
         //weights
@@ -156,21 +159,46 @@ public class LevelGeneration : MonoBehaviour
 
     IEnumerator DrawMap()
     {
-        foreach(Room room in roomArray)
+        foreach(Vector2 room in takenPositions)
         {
             if(room == null)
             {
                 continue;
             }
 
-            Vector2 drawPos = room.gridPos;
+            Vector2 drawPos = room;
             drawPos.x *= (roomObj.transform.lossyScale.x + cardSpacing);
             drawPos.y *= (roomObj.transform.lossyScale.y + cardSpacing);
-            Instantiate(roomObj, drawPos, Quaternion.identity);
+            rooms.Add(Instantiate(roomObj, drawPos, Quaternion.identity));
             yield return new WaitForSeconds(0.1f);
 
         }
+
+        GameObject go = Instantiate(playerPrefab, GetStartingPos(), Quaternion.identity);
+        player = go.GetComponent<Player>();
+        go.GetComponent<Player>().board = this;
+
+        int i = 0;
+        foreach (GameObject var in rooms)
+        {
+            var.GetComponent<CardBase>().InitCard(this,takenPositions[i],player,CardType.NONE);
+            ++i;
+        }
+
         yield break;
 
+    }
+
+    public Vector2 GetStartingPos()
+    {
+        return BoardToWorldPos(takenPositions[0]);
+    }
+
+    public Vector2 BoardToWorldPos(Vector2 gridPos)
+    {
+        Vector2 worldPos = gridPos;
+        worldPos.x *= (roomObj.transform.lossyScale.x + cardSpacing);
+        worldPos.y *= (roomObj.transform.lossyScale.y + cardSpacing);
+        return worldPos;
     }
 }

@@ -5,37 +5,35 @@ using UnityEngine.UI;
 
 public class StatBars : MonoBehaviour {
 
-    public enum PlayerStats
-    {
-        NONE,
-        HEALTH,
-        MANA,
-        HUNGER,
-        MAX
-    }
 
     [SerializeField] Player player;
-    [SerializeField] PlayerStats stat = PlayerStats.NONE;
-    [SerializeField] Image statBar;
 
-	// Use this for initialization
-	void Start () {
-        switch(stat)
-        {
-            case PlayerStats.HEALTH:
-                break;
-            case PlayerStats.MANA:
-                break;
-            case PlayerStats.HUNGER:
-                break;
-            default:
-                break;
-        }
-
-    }
+    [SerializeField]
+    Image healthBar = null;
+    [SerializeField]
+    Image manaBar = null;
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (!player)
+        {
+            if (GameObject.FindGameObjectWithTag("Player"))
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
+        else
+        {
+            UpdateHealthBar();
+            UpdateManaBar();
+        }
 	}
+
+    void UpdateManaBar()
+    {
+        manaBar.fillAmount = player.currManaPoints / player.maxManaPoints;
+    }
+
+    void UpdateHealthBar()
+    {
+        healthBar.fillAmount = player.currHealthPoints / player.maxHealthPoints;
+    }
 }

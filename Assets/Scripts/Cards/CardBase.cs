@@ -15,8 +15,9 @@ public enum CardType
 public class CardBase : MonoBehaviour
 {
 
-    Board board = null;
-    int boardIndex = 0;
+    LevelGeneration board = null;
+    [SerializeField]
+    Vector2 boardIndex = Vector2.zero;
     CardFlip flipper = null;
     Player player = null;
     [SerializeField]
@@ -25,35 +26,35 @@ public class CardBase : MonoBehaviour
     public List<GameObject> enemyTokens;
 
     GameObject enemyObj;
-    bool revealed =false;
+    bool revealed = false;
     // Use this for initialization
     void Start()
     {
         flipper = GetComponent<CardFlip>();
-        board = FindObjectOfType<Board>();
+        board = FindObjectOfType<LevelGeneration>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cardType == CardType.Enemy && revealed&& !enemyObj )
+        if (cardType == CardType.Enemy && revealed && !enemyObj)
         {
             cardType = CardType.NONE;
             player.inCombat = false;
         }
     }
 
-    public void InitCard(Board board, int boardindex, Player player, CardType type)
+    public void InitCard(LevelGeneration board, Vector2 boardindex, Player player, CardType type)
     {
         this.board = board;
         this.player = player;
         boardIndex = boardindex;
         cardType = type;
 
-        if(cardType == CardType.NONE)
+        if (cardType == CardType.NONE)
         {
             int index = Random.Range(0, 2);
-            if(index == 1)
+            if (index == 1)
             {
                 cardType = CardType.Enemy;
             }
@@ -77,10 +78,10 @@ public class CardBase : MonoBehaviour
 
     bool CheckBesidePlayer()
     {
-        if (player.boardIndex + board.boardSize.y == boardIndex
-            || player.boardIndex - board.boardSize.y == boardIndex
-            || player.boardIndex + 1 == boardIndex
-            || player.boardIndex - 1 == boardIndex)
+        if (player.boardIndex + new Vector2(0,1) == boardIndex
+            || player.boardIndex - new Vector2(0, 1) == boardIndex
+            || player.boardIndex + new Vector2(1, 0) == boardIndex
+            || player.boardIndex - new Vector2(1, 0) == boardIndex)
         {
             return true;
         }
@@ -94,7 +95,7 @@ public class CardBase : MonoBehaviour
             case CardType.Enemy:
                 player.inCombat = true;
                 int index = Random.Range(0, enemyTokens.Count);
-                enemyObj = Instantiate(enemyTokens[index],board.CardPositionList[boardIndex],Quaternion.identity);
+                enemyObj = Instantiate(enemyTokens[index], board.BoardToWorldPos(boardIndex), Quaternion.identity);
                 revealed = true;
                 break;
             default:
