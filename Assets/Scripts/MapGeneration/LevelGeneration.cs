@@ -160,12 +160,7 @@ public class LevelGeneration : MonoBehaviour
     IEnumerator DrawMap()
     {
         foreach(Vector2 room in takenPositions)
-        {
-            if(room == null)
-            {
-                continue;
-            }
-
+        { 
             Vector2 drawPos = room;
             drawPos.x *= (roomObj.transform.lossyScale.x + cardSpacing);
             drawPos.y *= (roomObj.transform.lossyScale.y + cardSpacing);
