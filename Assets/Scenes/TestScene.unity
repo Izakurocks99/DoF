@@ -1164,10 +1164,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemObj: {fileID: 1992110988967592, guid: 386f3ddbfb1cbce41b4e250aa24ecbf0, type: 2}
   numSlots: 10
+  rows: 2
   cardSpacing: 0.1
   padding: 0.5
-  rows: 2
   itemOffset: 0.5
+  startingItems:
+  - {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  items: []
 --- !u!1 &1656177875
 GameObject:
   m_ObjectHideFlags: 0
