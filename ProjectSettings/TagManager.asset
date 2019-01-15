@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Combat
   - Enemy
+  - Pickable
   layers:
   - Default
   - TransparentFX

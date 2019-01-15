@@ -74,10 +74,10 @@ public class Inventory : MonoBehaviour {
         }
 
         GameObject item = Instantiate(itemObj, position, Quaternion.identity);
+        item.transform.parent = this.gameObject.transform.parent;
         item.GetComponent<ItemScript>().itembase = _item;
-        item.GetComponent<ItemScript>().Init(position);
+        item.GetComponent<ItemScript>().Init(item.transform.localPosition);
         items[i] = item;
 
-        item.transform.parent = this.gameObject.transform.parent;
     }
 }

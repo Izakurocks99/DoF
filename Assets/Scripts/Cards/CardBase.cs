@@ -78,6 +78,8 @@ public class CardBase : MonoBehaviour
 
     bool CheckBesidePlayer()
     {
+        if (!player)
+            return false;
         if (player.boardIndex + new Vector2(0,1) == boardIndex
             || player.boardIndex - new Vector2(0, 1) == boardIndex
             || player.boardIndex + new Vector2(1, 0) == boardIndex
