@@ -1326,6 +1326,8 @@ MonoBehaviour:
   itemOffset: 0.5
   startingItems:
   - {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - {fileID: 11400000, guid: 7d18d78999001774e9d38a261f31f43a, type: 2}
+  - {fileID: 11400000, guid: 7d18d78999001774e9d38a261f31f43a, type: 2}
   items: []
 --- !u!54 &1566181373
 Rigidbody:

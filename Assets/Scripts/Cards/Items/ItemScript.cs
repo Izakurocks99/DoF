@@ -16,6 +16,8 @@ public class ItemScript : MonoBehaviour {
         var bounds = spriteRenderer.sprite.bounds;
         var factor = transform.localScale.y / bounds.size.y;
         spriteRenderer.transform.localScale = new Vector3(factor, factor, factor);
+
+        itembase.Init();
 	}
 
     // Update is called once per frame
@@ -39,6 +41,7 @@ public class ItemScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        // move this to inside scriptable obj
         if (itembase is Weapon && collision.gameObject.tag == "Enemy")
         {
             //get enemy component
@@ -49,6 +52,19 @@ public class ItemScript : MonoBehaviour {
             weapon.Attack(enemy);
             //Return to hand
             transform.localPosition = inventoryPos;
+        }
+        if (itembase is Material && collision.gameObject.tag == "Pickable")
+        {
+            Item result;
+            //get other component
+            Item other = collision.gameObject.GetComponent<ItemScript>().itembase;
+            //cast to material type
+            Material material = (Material)itembase;
+            //use weapon
+            material.Craft(other,out result);
+            //Return to hand
+            transform.localPosition = inventoryPos;
+            //create from result
         }
     }
 }
