@@ -49,15 +49,7 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Rescale();
 
-    }
-
-    void Rescale()
-    {
-        float scalex = numSlots + numSlots * cardSpacing;
-        float scaley = rows + rows * cardSpacing;
-        this.gameObject.transform.localScale = new Vector3(scalex, scaley, 1);
     }
 
     public void AddToInventory(Item _item)
@@ -76,8 +68,15 @@ public class Inventory : MonoBehaviour {
         GameObject item = Instantiate(itemObj, position, Quaternion.identity);
         item.transform.parent = this.gameObject.transform.parent;
         item.GetComponent<ItemScript>().itembase = _item;
-        item.GetComponent<ItemScript>().Init(item.transform.localPosition);
+        item.GetComponent<ItemScript>().Init(item.transform.localPosition,i,this);
         items[i] = item;
 
+    }
+
+    public void RemoveFromInventory(int _itemIndex)
+    {
+        Destroy(items[_itemIndex]);
+        items[_itemIndex] = null;
+        
     }
 }

@@ -7,8 +7,11 @@ public class ItemScript : MonoBehaviour {
     public Item itembase;
     [SerializeField] SpriteRenderer spriteRenderer;
     public Vector3 inventoryPos;
+    public int inventoryIndex;
 
     public bool selected;
+
+    Inventory theInv;
 
 	// Use this for initialization
 	void Start () {
@@ -25,9 +28,11 @@ public class ItemScript : MonoBehaviour {
 		
 	}
 
-    public void Init(Vector3 pos)
+    public void Init(Vector3 pos,int index, Inventory inv)
     {
         inventoryPos = pos;
+        theInv = inv;
+        inventoryIndex = index;
     }
 
     public void SelectThis()
@@ -55,16 +60,26 @@ public class ItemScript : MonoBehaviour {
         }
         if (itembase is Material && collision.gameObject.tag == "Pickable")
         {
+            if (collision.gameObject.GetComponent<ItemScript>().GetInstanceID() > this.GetInstanceID())
+                return;
+
             Item result;
             //get other component
             Item other = collision.gameObject.GetComponent<ItemScript>().itembase;
             //cast to material type
             Material material = (Material)itembase;
             //use weapon
-            material.Craft(other,out result);
-            //Return to hand
-            transform.localPosition = inventoryPos;
-            //create from result
+            if (material.Craft(other, out result))
+            {
+
+                //create from result
+                theInv.RemoveFromInventory(collision.gameObject.GetComponent<ItemScript>().inventoryIndex);
+                theInv.RemoveFromInventory(inventoryIndex);
+                theInv.AddToInventory(result);
+            }
+            else
+                //Return to hand
+                transform.localPosition = inventoryPos;
         }
     }
 }

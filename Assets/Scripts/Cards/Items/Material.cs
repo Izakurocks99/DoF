@@ -15,7 +15,6 @@ public class Material : Item
 {
     public List<CraftingRecipe> recipes;
     public Dictionary<Item, Item> itemMap;
-    bool canCraft;
 
     public override void Init()
     {
@@ -26,10 +25,15 @@ public class Material : Item
         }
     }
 
-    public virtual void Craft(Item other, out Item result)
+    public virtual bool Craft(Item other, out Item result)
     {
-        result = itemMap[other];
-        Debug.Log("Crafted with: " + other.cardName + " Created: " + result.cardName);
-
+        if (itemMap.ContainsKey(other))
+        {
+            result = itemMap[other];
+            Debug.Log("Crafted with: " + other.cardName + " Created: " + result.cardName);
+            return true;    
+        }
+        result = null;
+        return false;
     }
 }
