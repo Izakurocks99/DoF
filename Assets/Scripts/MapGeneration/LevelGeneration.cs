@@ -159,7 +159,20 @@ public class LevelGeneration : MonoBehaviour
 
     IEnumerator DrawMap()
     {
-        foreach(Vector2 room in takenPositions)
+        if (!player)
+        {
+            GameObject go = Instantiate(playerPrefab, GetStartingPos(), Quaternion.identity);
+            player = go.GetComponent<Player>();
+            go.GetComponent<Player>().board = this;
+            player.gameObject.SetActive(false);
+        }
+        else
+        {
+            player.transform.position = GetStartingPos();
+        }
+        player.boardIndex = Vector2.zero;
+
+        foreach (Vector2 room in takenPositions)
         { 
             Vector2 drawPos = room;
             drawPos.x *= (roomObj.transform.lossyScale.x + cardSpacing);
@@ -169,19 +182,7 @@ public class LevelGeneration : MonoBehaviour
 
         }
 
-        if (!player)
-        {
-            GameObject go = Instantiate(playerPrefab, GetStartingPos(), Quaternion.identity);
-            player = go.GetComponent<Player>();
-            go.GetComponent<Player>().board = this;
-        }
-        else
-        {
-            player.gameObject.SetActive(true);
-            player.transform.position = GetStartingPos();
-        }
-        player.boardIndex = Vector2.zero;
-
+        player.gameObject.SetActive(true);
         for (int i =0;i < rooms.Count; ++i)
         {
             if (i == 0)

@@ -80,12 +80,6 @@ public class CardBase : MonoBehaviour
                 flipper.Flip();
             else
                 player.MoveToBoardPos(boardIndex);
-
-
-            if (cardType == CardType.Exit)
-            {
-                board.ResetBoard();
-            }
         }
     }
 
@@ -116,6 +110,14 @@ public class CardBase : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(cardType == CardType.Exit && collision.gameObject.tag == "Player")
+        {
+            board.ResetBoard();
         }
     }
 }
