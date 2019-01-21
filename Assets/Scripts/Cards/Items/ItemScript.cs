@@ -9,7 +9,7 @@ public class ItemScript : MonoBehaviour {
     public Vector3 inventoryPos;
     public int inventoryIndex;
 
-    public bool selected;
+    public bool reset;
 
     Inventory theInv;
 
@@ -35,15 +35,6 @@ public class ItemScript : MonoBehaviour {
         inventoryIndex = index;
     }
 
-    public void SelectThis()
-    {
-        selected = true;
-    }
-    public void LetGo()
-    {
-        selected = false;
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         // move this to inside scriptable obj
@@ -55,8 +46,6 @@ public class ItemScript : MonoBehaviour {
             Weapon weapon = (Weapon)itembase;
             //use weapon
             weapon.Attack(enemy);
-            //Return to hand
-            transform.localPosition = inventoryPos;
         }
         if (itembase is Material && collision.gameObject.tag == "Pickable")
         {
@@ -77,9 +66,12 @@ public class ItemScript : MonoBehaviour {
                 theInv.RemoveFromInventory(inventoryIndex);
                 theInv.AddToInventory(result);
             }
-            else
-                //Return to hand
-                transform.localPosition = inventoryPos;
+        }
+        //Return to hand
+        if (reset)
+        {
+            transform.localPosition = inventoryPos;
+            reset = false;
         }
     }
 }

@@ -15,7 +15,7 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField]
     Vector3 cardOffset;
 
-    //GameObject theCard;
+    ItemScript theCard;
     [SerializeField] LayerMask layerMask;
 
     // Use this for initialization
@@ -47,7 +47,7 @@ public class DragAndDrop : MonoBehaviour
             if (getTarget)
             {
                 getTarget.GetComponent<Collider>().enabled = true;
-                //theCard.reset = true;
+                theCard.reset = true;
             }
             isMouseDragging = false;
 
@@ -77,7 +77,7 @@ public class DragAndDrop : MonoBehaviour
         {
             if (hit.collider.gameObject)
             {
-                //theCard = hit.collider.gameObject;
+                theCard = hit.collider.gameObject.GetComponent<ItemScript>();
                 return hit.collider.gameObject;
             }
         }
