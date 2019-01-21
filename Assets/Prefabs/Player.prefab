@@ -218,13 +218,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 0}
   maxHunger: 10
-  currHunger: 5
+  currHunger: 10
   maxHealthPoints: 10
   currHealthPoints: 10
   maxManaPoints: 10
   currManaPoints: 10
   boardIndex: {x: 0, y: 0}
   inCombat: 0
+  dead: 0
+  deadTransform: {fileID: 0}
   moveSpeed: 3
   hand: {fileID: 0}
 --- !u!114 &114308222860062534

@@ -12,9 +12,15 @@ public class StatBars : MonoBehaviour {
     Image healthBar = null;
     [SerializeField]
     Image manaBar = null;
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void Start()
+    {
+        healthBar.transform.parent.gameObject.SetActive(false);
+        manaBar.transform.parent.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (!player)
         {
             if (GameObject.FindGameObjectWithTag("Player"))
@@ -22,6 +28,8 @@ public class StatBars : MonoBehaviour {
         }
         else
         {
+            healthBar.transform.parent.gameObject.SetActive(true);
+            manaBar.transform.parent.gameObject.SetActive(true);
             UpdateHealthBar();
             UpdateManaBar();
         }
