@@ -16,28 +16,49 @@ public class EnemyCard : MonoBehaviour {
 
     public int attack, health;
 
+    TurnManager manager;
+
 	// Use this for initialization
 	void Start () {
         cardImage.sprite = cardSO.art;
         attackDamage.GetComponent<TextMeshPro>();
-        attackDamage.text = cardSO.attack.ToString();
-        healthPoints.text = cardSO.health.ToString();
 
         attack = cardSO.attack;
         health = cardSO.health;
 
+        attackDamage.text = attack.ToString();
+        healthPoints.text = health.ToString();
 
         var bounds = cardSO.art.bounds;
         var factor = (transform.localScale.y / bounds.size.y)/transform.localScale.y;
         cardImage.transform.localScale = new Vector3(factor, factor, factor);
 
+        manager = FindObjectOfType<TurnManager>();
+        manager.AddToList(this);
     }
 
     // Update is called once per frame
     void Update () {
-		if(health <= 0)
+	}
+
+    public void OnDamaged(int damage)
+    {
+        health -= damage;
+        healthPoints.text = health.ToString();
+        //Deals Damage
+        Debug.Log("ATTACK " + cardSO.cardName);
+        //Returns to hand
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
-	}
+        else
+        manager.EndTurn();
+    }
+
+    public int GetAttack()
+    {
+        //play attack animation
+        return attack;
+    }
 }

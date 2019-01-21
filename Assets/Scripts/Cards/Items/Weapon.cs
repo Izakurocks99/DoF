@@ -9,9 +9,6 @@ public class Weapon : Item
 
     public virtual void Attack(EnemyCard enemy)
     {
-        enemy.health -= damage;
-        //Deals Damage
-        Debug.Log("ATTACK " + enemy.cardSO.cardName);
-        //Returns to hand
+        enemy.OnDamaged(damage);
     }
 }

@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour {
         float scaley = rows + rows * cardSpacing + padding * 2;
         this.gameObject.transform.localScale = new Vector3(scalex, scaley, 0.1f);
 
-        Vector3 botLeft = gameObject.transform.position + new Vector3((-scalex+ itemObj.transform.localScale.x )/ 2f, (-scaley+ itemObj.transform.localScale .y)/ 2f, -itemOffset);
+        Vector3 botLeft = gameObject.transform.localPosition + new Vector3((-scalex+ itemObj.transform.localScale.x )/ 2f, (-scaley+ itemObj.transform.localScale .y)/ 2f, -itemOffset);
         //set the card positions into list
         int rowSize = numSlots / rows;
         for (int y = 0; y < rows; ++y)
@@ -67,6 +67,7 @@ public class Inventory : MonoBehaviour {
 
         GameObject item = Instantiate(itemObj, position, Quaternion.identity);
         item.transform.parent = this.gameObject.transform.parent;
+        item.transform.localPosition = position;
         item.GetComponent<ItemScript>().itembase = _item;
         item.GetComponent<ItemScript>().Init(item.transform.localPosition,i,this);
         items[i] = item;
