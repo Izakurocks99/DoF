@@ -23,8 +23,11 @@ public class CameraFollow : MonoBehaviour {
         }
         else
         {
-            Vector3 newPos = player.transform.position + posOffset;
-            gameObject.transform.position = new Vector3(newPos.x,newPos.y,gameObject.transform.position.z);
+            if (!player.GetComponent<Player>().dead)
+            {
+                Vector3 newPos = player.transform.position + posOffset;
+                gameObject.transform.position = new Vector3(newPos.x, newPos.y, gameObject.transform.position.z);
+            }
         }
 
     }

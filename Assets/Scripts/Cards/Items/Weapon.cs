@@ -10,5 +10,6 @@ public class Weapon : Item
     public virtual void Attack(EnemyCard enemy)
     {
         enemy.OnDamaged(damage);
+        lifetime--;
     }
 }

@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
 
     public Vector2 boardIndex;
     public bool inCombat;
+    public bool dead;
+    float deadMovePercent = 0;
+    [SerializeField]
+    Transform deadTransform;
 
     [SerializeField]
     float moveSpeed = 0f;
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
         //currManaPoints = maxManaPoints;
 
         //Move to start
+        if(board)
         gameObject.transform.position = board.GetStartingPos();
 
         collisionBox = GetComponent<BoxCollider>();
@@ -47,6 +52,18 @@ public class Player : MonoBehaviour
     {
         if (moving)
             Move();
+
+        if(dead)
+        {
+            //GetComponent<Rigidbody>().useGravity = false;
+            //deadTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+            if (deadMovePercent < 1)
+            {
+                deadMovePercent += Time.deltaTime;
+                Vector3 start = board.BoardToWorldPos(boardIndex);
+                DieAnim(start, deadTransform.position+new Vector3(0,0,2), deadMovePercent);
+            }
+        }
     }
 
     public void ModifyHealth(float value)
@@ -56,9 +73,12 @@ public class Player : MonoBehaviour
         {
             currHealthPoints = maxHealthPoints;
         }
-        else if (currHealthPoints < 0)
+        else if (currHealthPoints <= 0)
         {
             currHealthPoints = 0;
+            dead = true;
+            GetComponent<Rigidbody>().useGravity = false;
+            deadTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
     }
 
@@ -108,5 +128,18 @@ public class Player : MonoBehaviour
             movepercent = 0;
             moving = false;
         }
+    }
+
+    void DieAnim(Vector3 startPos, Vector3 endPos, float percentage)
+    {
+        transform.position = Vector3.Lerp(startPos, endPos, percentage);
+
+        Vector3 startAngle = new Vector3(0, 0, 0);
+        Vector3 targetAngle = new Vector3(0, 180, 0);
+        Vector3 lerpAngle = new Vector3(
+             Mathf.LerpAngle(startAngle.x, targetAngle.x, percentage),
+             Mathf.LerpAngle(startAngle.y, targetAngle.y, percentage),
+             Mathf.LerpAngle(startAngle.z, targetAngle.z, percentage));
+        transform.eulerAngles = lerpAngle;
     }
 }

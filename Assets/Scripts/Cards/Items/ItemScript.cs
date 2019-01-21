@@ -10,6 +10,7 @@ public class ItemScript : MonoBehaviour {
     public int inventoryIndex;
 
     public bool reset;
+    public int lifeTime;
 
     Inventory theInv;
 
@@ -21,6 +22,8 @@ public class ItemScript : MonoBehaviour {
         spriteRenderer.transform.localScale = new Vector3(factor, factor, factor);
 
         itembase.Init();
+
+        lifeTime = itembase.lifetime;
 	}
 
     // Update is called once per frame

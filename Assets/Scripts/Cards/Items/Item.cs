@@ -28,6 +28,8 @@ public class Item : ScriptableObject {
     public ItemTier tier;
     public Sprite art;
 
+    public int lifetime;
+
     public virtual void Init()
     {
 

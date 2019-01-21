@@ -169,6 +169,7 @@ public class LevelGeneration : MonoBehaviour
         else
         {
             player.transform.position = GetStartingPos();
+            player.board = this;
         }
         player.boardIndex = Vector2.zero;
 

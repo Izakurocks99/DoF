@@ -50,7 +50,7 @@ public class EnemyCard : MonoBehaviour {
         //Returns to hand
         if (health <= 0)
         {
-            Destroy(gameObject);
+            manager.RemoveFromList(this);
         }
         else
         manager.EndTurn();
