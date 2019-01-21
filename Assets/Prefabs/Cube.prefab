@@ -170,5 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardIndex: {x: 0, y: 0}
   cardType: 0
+  enemyBase: {fileID: 1372522947529386, guid: 59c0a4c5d484a074e8982e13679c6e62, type: 2}
   enemyTokens:
-  - {fileID: 1372522947529386, guid: 59c0a4c5d484a074e8982e13679c6e62, type: 2}
+  - {fileID: 11400000, guid: 1bde494ed314a8742a53a2282a921ac2, type: 2}
+  - {fileID: 11400000, guid: 6fb46de24ed1500418fbf1d73b77f89b, type: 2}
