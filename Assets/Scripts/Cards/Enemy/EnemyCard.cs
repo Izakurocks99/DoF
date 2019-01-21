@@ -25,10 +25,16 @@ public class EnemyCard : MonoBehaviour {
 
         attack = cardSO.attack;
         health = cardSO.health;
+
+
+        var bounds = cardSO.art.bounds;
+        var factor = (transform.localScale.y / bounds.size.y)/transform.localScale.y;
+        cardImage.transform.localScale = new Vector3(factor, factor, factor);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		if(health <= 0)
         {
             Destroy(gameObject);

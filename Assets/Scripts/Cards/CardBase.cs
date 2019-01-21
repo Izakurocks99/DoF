@@ -23,7 +23,9 @@ public class CardBase : MonoBehaviour
     [SerializeField]
     CardType cardType = CardType.NONE;
 
-    public List<GameObject> enemyTokens;
+    //public List<GameObject> enemyTokens;
+    public GameObject enemyBase;
+    public List<EnemyScriptableObj> enemyTokens;
 
     GameObject enemyObj;
     bool revealed = false;
@@ -97,7 +99,8 @@ public class CardBase : MonoBehaviour
             case CardType.Enemy:
                 player.inCombat = true;
                 int index = Random.Range(0, enemyTokens.Count);
-                enemyObj = Instantiate(enemyTokens[index], board.BoardToWorldPos(boardIndex), Quaternion.identity);
+                enemyObj = Instantiate(enemyBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
+                enemyObj.GetComponent<EnemyCard>().cardSO = enemyTokens[index];
                 revealed = true;
                 break;
             default:
