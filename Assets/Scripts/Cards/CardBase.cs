@@ -61,6 +61,11 @@ public class CardBase : MonoBehaviour
                 cardType = CardType.Enemy;
             }
         }
+
+        if (cardType == CardType.Entry)
+        {
+            flipper.flipped = true;
+        }
     }
 
     private void FixedUpdate()
@@ -75,6 +80,12 @@ public class CardBase : MonoBehaviour
                 flipper.Flip();
             else
                 player.MoveToBoardPos(boardIndex);
+
+
+            if (cardType == CardType.Exit)
+            {
+                board.ResetBoard();
+            }
         }
     }
 

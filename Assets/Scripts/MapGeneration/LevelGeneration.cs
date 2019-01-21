@@ -169,15 +169,27 @@ public class LevelGeneration : MonoBehaviour
 
         }
 
-        GameObject go = Instantiate(playerPrefab, GetStartingPos(), Quaternion.identity);
-        player = go.GetComponent<Player>();
-        go.GetComponent<Player>().board = this;
-
-        int i = 0;
-        foreach (GameObject var in rooms)
+        if (!player)
         {
-            var.GetComponent<CardBase>().InitCard(this,takenPositions[i],player,CardType.NONE);
-            ++i;
+            GameObject go = Instantiate(playerPrefab, GetStartingPos(), Quaternion.identity);
+            player = go.GetComponent<Player>();
+            go.GetComponent<Player>().board = this;
+        }
+        else
+        {
+            player.gameObject.SetActive(true);
+            player.transform.position = GetStartingPos();
+        }
+        player.boardIndex = Vector2.zero;
+
+        for (int i =0;i < rooms.Count; ++i)
+        {
+            if (i == 0)
+                rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.Entry);
+            else if (i == rooms.Count - 1)
+                rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.Exit);
+            else
+                rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.NONE);
         }
 
         yield break;
@@ -195,5 +207,18 @@ public class LevelGeneration : MonoBehaviour
         worldPos.x *= (roomObj.transform.lossyScale.x + cardSpacing);
         worldPos.y *= (roomObj.transform.lossyScale.y + cardSpacing);
         return worldPos;
+    }
+
+    public void ResetBoard()
+    {
+        player.gameObject.SetActive(false);
+        foreach (GameObject var in rooms)
+        {
+            Destroy(var);
+        }
+        takenPositions.Clear();
+        rooms.Clear();
+        CreateRooms();
+        StartCoroutine(DrawMap());
     }
 }
