@@ -20,6 +20,8 @@ public class LevelGeneration : MonoBehaviour
     Player player;
 
     List<GameObject> rooms = new List<GameObject>();
+    TurnManager turnmanager;
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +35,7 @@ public class LevelGeneration : MonoBehaviour
 
         CreateRooms();
         StartCoroutine(DrawMap());
+        turnmanager = FindObjectOfType<TurnManager>();
     }
 
     // Update is called once per frame
@@ -221,6 +224,7 @@ public class LevelGeneration : MonoBehaviour
         takenPositions.Clear();
         rooms.Clear();
         CreateRooms();
+        turnmanager.RemoveAll();
         StartCoroutine(DrawMap());
     }
 }

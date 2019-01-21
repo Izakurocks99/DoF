@@ -118,6 +118,7 @@ public class CardBase : MonoBehaviour
         if(cardType == CardType.Exit && collision.gameObject.tag == "Player")
         {
             board.ResetBoard();
+            player.inCombat = false;
         }
     }
 }

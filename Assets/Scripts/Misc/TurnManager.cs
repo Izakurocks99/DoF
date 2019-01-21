@@ -43,4 +43,14 @@ public class TurnManager : MonoBehaviour {
             player.ModifyHealth(-attack);
         }
     }
+
+    public void RemoveAll()
+    {
+        foreach(EnemyCard var in enemyList)
+        {
+            enemyList.Remove(var);
+            Destroy(var.gameObject);
+
+        }
+    }
 }
