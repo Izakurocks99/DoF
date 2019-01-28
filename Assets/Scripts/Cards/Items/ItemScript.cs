@@ -6,6 +6,7 @@ public class ItemScript : MonoBehaviour {
 
     public Item itembase;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Color spriteColor;
     public Vector3 inventoryPos;
     public int inventoryIndex;
 
@@ -18,6 +19,7 @@ public class ItemScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         spriteRenderer.sprite = itembase.art;
+        spriteRenderer.color = itembase.color;
         var bounds = spriteRenderer.sprite.bounds;
         var factor = transform.localScale.y / bounds.size.y;
         spriteRenderer.transform.localScale = new Vector3(factor, factor, factor);

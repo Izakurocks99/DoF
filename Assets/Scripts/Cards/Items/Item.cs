@@ -27,6 +27,7 @@ public class Item : ScriptableObject {
     public ItemType type;
     public ItemTier tier;
     public Sprite art;
+    public Color color;
 
     public int lifetime;
 
