@@ -82,4 +82,22 @@ public class Inventory : MonoBehaviour {
         items[_itemIndex] = null;
         
     }
+
+    public void ResetInventory()
+    {
+        for(int i = 0;i < items.Length; ++i)
+        {
+            if (items[i])
+            {
+                RemoveFromInventory(i);
+            }
+        }
+
+        //add starting items
+        foreach (Item var in startingItems)
+        {
+            //spawn a game object and add the variables of the scriptable obj into it/ assign the scriptable obj
+            AddToInventory(var);
+        }
+    }
 }

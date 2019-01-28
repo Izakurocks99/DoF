@@ -151,6 +151,7 @@ public class Player : MonoBehaviour
             //gameObject.SetActive(false);
             Destroy(this.gameObject);
             board.ResetBoard();
+            board.inventory.ResetInventory();
         }
     }
 }

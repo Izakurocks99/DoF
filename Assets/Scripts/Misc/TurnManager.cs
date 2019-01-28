@@ -48,9 +48,8 @@ public class TurnManager : MonoBehaviour {
     {
         foreach(EnemyCard var in enemyList)
         {
-            enemyList.Remove(var);
             Destroy(var.gameObject);
-
         }
+        enemyList.Clear();
     }
 }

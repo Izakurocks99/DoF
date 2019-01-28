@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
     GameObject player;
+    [SerializeField]
     Vector3 posOffset;
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,9 @@ public class CameraFollow : MonoBehaviour {
             if (GameObject.FindGameObjectWithTag("Player"))
             {
                 player = GameObject.FindGameObjectWithTag("Player");
-                posOffset = gameObject.transform.position - player.transform.position;
+                //posOffset = gameObject.transform.position - player.transform.position;
+                Vector3 newPos = player.transform.position + posOffset;
+                gameObject.transform.position = newPos;
             }
         }
         else
