@@ -16,4 +16,5 @@ MonoBehaviour:
   type: 2
   tier: 0
   art: {fileID: 21300000, guid: 8ccd9ef8564b04f4485b5e54a16df6e4, type: 3}
-  damage: 1
+  lifetime: 2
+  damage: 2

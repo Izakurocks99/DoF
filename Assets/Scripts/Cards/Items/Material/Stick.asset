@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efc6ba95b698b04a8e72e44319eab87, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Stick
   description: 
   type: 1
   tier: 0
-  art: {fileID: 0}
+  art: {fileID: 21300000, guid: 3abd3b28df811444bac40197a6c079b5, type: 3}
+  lifetime: 0
   recipes: []

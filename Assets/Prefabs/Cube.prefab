@@ -174,3 +174,7 @@ MonoBehaviour:
   enemyTokens:
   - {fileID: 11400000, guid: 1bde494ed314a8742a53a2282a921ac2, type: 2}
   - {fileID: 11400000, guid: 6fb46de24ed1500418fbf1d73b77f89b, type: 2}
+  biomeBase: {fileID: 1298405352875906, guid: 570246393095e3f4fa7267843ced568a, type: 2}
+  biomes:
+  - {fileID: 11400000, guid: 649d855001c20e14a88ae8130a84338d, type: 2}
+  endZone: {fileID: 11400000, guid: 589cd72af8e85564a94820edada6e946, type: 2}

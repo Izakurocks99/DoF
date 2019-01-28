@@ -47,7 +47,6 @@ public class EnemyCard : MonoBehaviour {
         health -= damage;
         healthPoints.text = health.ToString();
         //Deals Damage
-        Debug.Log("ATTACK " + cardSO.cardName);
         //Returns to hand
         if (health <= 0)
         {

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114258716969440764}
   m_Layer: 0
   m_Name: BiomeCard
-  m_TagString: Enemy
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardSO: {fileID: 0}
+  board: {fileID: 0}
   boardPos: {x: 0, y: 0}
   cardImage: {fileID: 212137929840462164}
 --- !u!212 &212137929840462164
