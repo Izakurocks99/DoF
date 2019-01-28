@@ -104,4 +104,12 @@ public class ItemScript : MonoBehaviour {
             reset = false;
         }
     }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            theInv.RemoveFromInventory(inventoryIndex);
+        }
+    }
 }
