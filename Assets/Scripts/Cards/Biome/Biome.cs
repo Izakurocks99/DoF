@@ -15,13 +15,15 @@ public class Biome : ScriptableObject {
     {
         List<Item> droppedItems = new List<Item>();
         float dropAmount = dropCount;
-        if (item == preferredTool)
-            dropAmount *= dropMultiplier;
+
+        if (!item) { }
+        else if (item == preferredTool)
+            dropAmount = dropCount * dropMultiplier;
 
         for (int i = 0; i < (int)dropAmount; ++i)
         {
             droppedItems.Add(dropList[Random.Range(0, dropList.Count)]);
         }
         return droppedItems;
-    }
+    }    
 }

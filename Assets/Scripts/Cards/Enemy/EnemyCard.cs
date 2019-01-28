@@ -8,6 +8,7 @@ public class EnemyCard : MonoBehaviour {
 
     public EnemyScriptableObj cardSO;
 
+    public LevelGeneration board;
     public Vector2 boardPos;
 
     public SpriteRenderer cardImage;
@@ -60,5 +61,13 @@ public class EnemyCard : MonoBehaviour {
     {
         //play attack animation
         return attack;
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && board.CheckBesidePlayer(boardPos))
+        {
+            OnDamaged(1);
+        }
     }
 }

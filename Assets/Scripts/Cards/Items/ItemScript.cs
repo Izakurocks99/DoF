@@ -49,6 +49,7 @@ public class ItemScript : MonoBehaviour {
             Weapon weapon = (Weapon)itembase;
             //use weapon
             weapon.Attack(enemy);
+            DecreaseDurability();
         }
         else if (collision.gameObject.tag == "Obstacle")
         {
@@ -58,6 +59,7 @@ public class ItemScript : MonoBehaviour {
             {
                 theInv.AddToInventory(drop);
             }
+            DecreaseDurability();
         }
         else if (itembase is Material && collision.gameObject.tag == "Pickable")
         {
@@ -84,6 +86,16 @@ public class ItemScript : MonoBehaviour {
         if (reset)
         {
             transform.localPosition = inventoryPos;
+            reset = false;
+        }
+    }
+
+    void DecreaseDurability()
+    {
+        lifeTime--;
+        if (lifeTime <= 0)
+        {
+            Destroy(this.gameObject);
             reset = false;
         }
     }

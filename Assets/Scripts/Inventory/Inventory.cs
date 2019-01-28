@@ -63,6 +63,8 @@ public class Inventory : MonoBehaviour {
                 position = cardPositions[i];
                 break;
             }
+            if (i == numSlots - 1)
+                return;
         }
 
         GameObject item = Instantiate(itemObj, position, Quaternion.identity);

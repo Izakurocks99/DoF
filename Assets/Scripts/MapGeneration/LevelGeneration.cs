@@ -15,6 +15,7 @@ public class LevelGeneration : MonoBehaviour
     [SerializeField]
     float cardSpacing = 0.1f;
 
+    public Inventory inventory;
     public GameObject roomObj;
     public GameObject playerPrefab;
     Player player;
@@ -226,5 +227,19 @@ public class LevelGeneration : MonoBehaviour
         CreateRooms();
         turnmanager.RemoveAll();
         StartCoroutine(DrawMap());
+    }
+
+    public bool CheckBesidePlayer(Vector2 boardIndex)
+    {
+        if (!player)
+            return false;
+        if (player.boardIndex + new Vector2(0, 1) == boardIndex
+            || player.boardIndex - new Vector2(0, 1) == boardIndex
+            || player.boardIndex + new Vector2(1, 0) == boardIndex
+            || player.boardIndex - new Vector2(1, 0) == boardIndex)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -28,6 +28,7 @@ public class CardBase : MonoBehaviour
     public List<EnemyScriptableObj> enemyTokens;
     public GameObject biomeBase;
     public List<Biome> biomes;
+    public Biome endZone;
 
     GameObject enemyObj;
     bool revealed = false;
@@ -80,7 +81,7 @@ public class CardBase : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && CheckBesidePlayer() && !player.inCombat)
+        if (Input.GetMouseButtonDown(0) && board.CheckBesidePlayer(boardIndex) && !player.inCombat)
         {
             if (!flipper.flipped)
                 flipper.Flip();
@@ -89,19 +90,19 @@ public class CardBase : MonoBehaviour
         }
     }
 
-    bool CheckBesidePlayer()
-    {
-        if (!player)
-            return false;
-        if (player.boardIndex + new Vector2(0,1) == boardIndex
-            || player.boardIndex - new Vector2(0, 1) == boardIndex
-            || player.boardIndex + new Vector2(1, 0) == boardIndex
-            || player.boardIndex - new Vector2(1, 0) == boardIndex)
-        {
-            return true;
-        }
-        return false;
-    }
+    //bool CheckBesidePlayer()
+    //{
+    //    if (!player)
+    //        return false;
+    //    if (player.boardIndex + new Vector2(0,1) == boardIndex
+    //        || player.boardIndex - new Vector2(0, 1) == boardIndex
+    //        || player.boardIndex + new Vector2(1, 0) == boardIndex
+    //        || player.boardIndex - new Vector2(1, 0) == boardIndex)
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
     public void Reveal()
     {
@@ -113,12 +114,23 @@ public class CardBase : MonoBehaviour
                 index = Random.Range(0, enemyTokens.Count);
                 enemyObj = Instantiate(enemyBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
                 enemyObj.GetComponent<EnemyCard>().cardSO = enemyTokens[index];
+                enemyObj.GetComponent<EnemyCard>().boardPos = boardIndex;
+                enemyObj.GetComponent<EnemyCard>().board = board;
                 revealed = true;
                 break;
             case CardType.Obstacle:
                 index = Random.Range(0, biomes.Count);
                 enemyObj = Instantiate(biomeBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
                 enemyObj.GetComponent<BiomeScript>().cardSO = biomes[index];
+                enemyObj.GetComponent<BiomeScript>().boardPos = boardIndex;
+                enemyObj.GetComponent<BiomeScript>().board = board;
+                revealed = true;
+                break;
+            case CardType.Exit:
+                enemyObj = Instantiate(biomeBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
+                enemyObj.GetComponent<BiomeScript>().cardSO = endZone;
+                enemyObj.GetComponent<BiomeScript>().boardPos = boardIndex;
+                enemyObj.GetComponent<BiomeScript>().board = board;
                 revealed = true;
                 break;
             default:
@@ -126,12 +138,12 @@ public class CardBase : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(cardType == CardType.Exit && collision.gameObject.tag == "Player")
-        {
-            board.ResetBoard();
-            player.inCombat = false;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(cardType == CardType.Exit && collision.gameObject.tag == "Player")
+    //    {
+    //        board.ResetBoard();
+    //        player.inCombat = false;
+    //    }
+    //}
 }
