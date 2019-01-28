@@ -6,9 +6,10 @@ public class TurnManager : MonoBehaviour {
 
     Player player;
     List<EnemyCard> enemyList = new List<EnemyCard>();
+    List<BiomeScript> biomeList = new List<BiomeScript>();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
     }
 	
 	// Update is called once per frame
@@ -29,10 +30,21 @@ public class TurnManager : MonoBehaviour {
         enemyList.Add(enemyCard);
     }
 
+    public void AddToList(BiomeScript biomeCard)
+    {
+        biomeList.Add(biomeCard);
+    }
+
     public void RemoveFromList(EnemyCard enemyCard)
     {
         enemyList.Remove(enemyCard);
         Destroy(enemyCard.gameObject);
+    }
+
+    public void RemoveFromList(BiomeScript biomeCard)
+    {
+        biomeList.Remove(biomeCard);
+        Destroy(biomeCard.gameObject);
     }
 
     public void EndTurn()
@@ -51,5 +63,11 @@ public class TurnManager : MonoBehaviour {
             Destroy(var.gameObject);
         }
         enemyList.Clear();
+
+        foreach (BiomeScript var in biomeList)
+        {
+            Destroy(var.gameObject);
+        }
+        biomeList.Clear();
     }
 }

@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
             endPos = board.BoardToWorldPos(boardIndex);
             moving = true;
             collisionBox.enabled = false;
+            board.FlipSurroundingRooms();
             //hand.drawCard = true;
         }
     }

@@ -13,6 +13,7 @@ public class ItemScript : MonoBehaviour {
     public int lifeTime;
 
     Inventory theInv;
+    bool canCraft = true;
 
 	// Use this for initialization
 	void Start () {
@@ -63,22 +64,24 @@ public class ItemScript : MonoBehaviour {
         }
         else if (itembase is Material && collision.gameObject.tag == "Pickable")
         {
-            if (collision.gameObject.GetComponent<ItemScript>().GetInstanceID() > this.GetInstanceID())
-                return;
-
-            Item result;
-            //get other component
-            Item other = collision.gameObject.GetComponent<ItemScript>().itembase;
-            //cast to material type
-            Material material = (Material)itembase;
-            //use weapon
-            if (material.Craft(other, out result))
+            if (collision.gameObject.GetComponent<ItemScript>().GetInstanceID() > this.GetInstanceID() || !canCraft || !collision.gameObject.GetComponent<ItemScript>().canCraft)
+            { }
+            else
             {
-
-                //create from result
-                theInv.RemoveFromInventory(collision.gameObject.GetComponent<ItemScript>().inventoryIndex);
-                theInv.RemoveFromInventory(inventoryIndex);
-                theInv.AddToInventory(result);
+                Item result;
+                //get other component
+                Item other = collision.gameObject.GetComponent<ItemScript>().itembase;
+                //cast to material type
+                Material material = (Material)itembase;
+                if (material.Craft(other, out result))
+                {
+                    canCraft = false;
+                    collision.gameObject.GetComponent<ItemScript>().canCraft = false;
+                    //create from result
+                    theInv.RemoveFromInventory(collision.gameObject.GetComponent<ItemScript>().inventoryIndex);
+                    theInv.RemoveFromInventory(inventoryIndex);
+                    theInv.AddToInventory(result);
+                }
             }
         }
 

@@ -11,12 +11,16 @@ public class BiomeScript : MonoBehaviour {
     public Vector2 boardPos;
     public SpriteRenderer cardImage;
 
+    TurnManager manager;
+
     // Use this for initialization
     void Start () {
         cardImage.sprite = cardSO.art;
         var bounds = cardSO.art.bounds;
         var factor = (transform.localScale.y / bounds.size.y) / transform.localScale.y;
         cardImage.transform.localScale = new Vector3(factor, factor, factor);
+        manager = FindObjectOfType<TurnManager>();
+        manager.AddToList(this);
     }
 	
 	// Update is called once per frame
@@ -29,10 +33,9 @@ public class BiomeScript : MonoBehaviour {
         if(cardSO.dropList.Count == 0)
         {
             board.ResetBoard();
-            Destroy(this.gameObject);
             return null;
         }
-        Destroy(this.gameObject);
+        manager.RemoveFromList(this);
         return cardSO.Interact(item);
     }
 
@@ -43,7 +46,6 @@ public class BiomeScript : MonoBehaviour {
             if (cardSO.dropList.Count == 0)
             {
                 board.ResetBoard();
-                Destroy(this.gameObject);
                 return;
             }
 
@@ -52,7 +54,8 @@ public class BiomeScript : MonoBehaviour {
             {
                 board.inventory.AddToInventory(drop);
             }
-            Destroy(this.gameObject);
+
+            manager.RemoveFromList(this);
         }
     }
 }

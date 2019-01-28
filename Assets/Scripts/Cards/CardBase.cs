@@ -16,8 +16,7 @@ public class CardBase : MonoBehaviour
 {
 
     LevelGeneration board = null;
-    [SerializeField]
-    Vector2 boardIndex = Vector2.zero;
+    public Vector2 boardIndex = Vector2.zero;
     CardFlip flipper = null;
     Player player = null;
     [SerializeField]
@@ -86,7 +85,11 @@ public class CardBase : MonoBehaviour
             if (!flipper.flipped)
                 flipper.Flip();
             else
+            {
                 player.MoveToBoardPos(boardIndex);
+                //map get around and flip them
+                //board
+            }
         }
     }
 
@@ -138,12 +141,11 @@ public class CardBase : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(cardType == CardType.Exit && collision.gameObject.tag == "Player")
-    //    {
-    //        board.ResetBoard();
-    //        player.inCombat = false;
-    //    }
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (revealed && collision.gameObject.tag == "Player")
+        {
+
+        }
+    }
 }

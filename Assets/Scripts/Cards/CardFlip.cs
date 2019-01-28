@@ -44,6 +44,8 @@ public class CardFlip : MonoBehaviour
 
     public void Flip()
     {
+        if (flipped)
+            return;
         endRotation = endTransform.transform.rotation;
         flipping = true;
         fliptime = 0;
