@@ -55,8 +55,7 @@ public class Player : MonoBehaviour
 
         if(dead)
         {
-            //GetComponent<Rigidbody>().useGravity = false;
-            //deadTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+            ModifyHealth(-currHealthPoints);
             if (deadMovePercent < 1)
             {
                 deadMovePercent += Time.deltaTime;
@@ -141,5 +140,17 @@ public class Player : MonoBehaviour
              Mathf.LerpAngle(startAngle.y, targetAngle.y, percentage),
              Mathf.LerpAngle(startAngle.z, targetAngle.z, percentage));
         transform.eulerAngles = lerpAngle;
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && dead)
+        {
+            //ModifyHealth(maxHealthPoints);
+            //dead = false;
+            //gameObject.SetActive(false);
+            Destroy(this.gameObject);
+            board.ResetBoard();
+        }
     }
 }

@@ -26,6 +26,8 @@ public class CardBase : MonoBehaviour
     //public List<GameObject> enemyTokens;
     public GameObject enemyBase;
     public List<EnemyScriptableObj> enemyTokens;
+    public GameObject biomeBase;
+    public List<Biome> biomes;
 
     GameObject enemyObj;
     bool revealed = false;
@@ -52,13 +54,17 @@ public class CardBase : MonoBehaviour
         this.player = player;
         boardIndex = boardindex;
         cardType = type;
-
+        
         if (cardType == CardType.NONE)
         {
             int index = Random.Range(0, 2);
             if (index == 1)
             {
                 cardType = CardType.Enemy;
+            }
+            else
+            {
+                cardType = CardType.Obstacle;
             }
         }
 
@@ -99,13 +105,20 @@ public class CardBase : MonoBehaviour
 
     public void Reveal()
     {
+        int index;
         switch (cardType)
         {
             case CardType.Enemy:
                 player.inCombat = true;
-                int index = Random.Range(0, enemyTokens.Count);
+                index = Random.Range(0, enemyTokens.Count);
                 enemyObj = Instantiate(enemyBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
                 enemyObj.GetComponent<EnemyCard>().cardSO = enemyTokens[index];
+                revealed = true;
+                break;
+            case CardType.Obstacle:
+                index = Random.Range(0, biomes.Count);
+                enemyObj = Instantiate(biomeBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
+                enemyObj.GetComponent<BiomeScript>().cardSO = biomes[index];
                 revealed = true;
                 break;
             default:

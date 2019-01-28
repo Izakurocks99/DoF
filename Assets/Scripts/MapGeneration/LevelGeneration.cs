@@ -162,7 +162,7 @@ public class LevelGeneration : MonoBehaviour
 
     IEnumerator DrawMap()
     {
-        if (!player)
+        if (!player || player.dead)
         {
             GameObject go = Instantiate(playerPrefab, GetStartingPos(), Quaternion.identity);
             player = go.GetComponent<Player>();

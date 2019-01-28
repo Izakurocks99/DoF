@@ -50,7 +50,16 @@ public class ItemScript : MonoBehaviour {
             //use weapon
             weapon.Attack(enemy);
         }
-        if (itembase is Material && collision.gameObject.tag == "Pickable")
+        else if (collision.gameObject.tag == "Obstacle")
+        {
+            BiomeScript biome = collision.gameObject.GetComponent<BiomeScript>();
+            List<Item> drops = biome.Interact(itembase);
+            foreach(Item drop in drops)
+            {
+                theInv.AddToInventory(drop);
+            }
+        }
+        else if (itembase is Material && collision.gameObject.tag == "Pickable")
         {
             if (collision.gameObject.GetComponent<ItemScript>().GetInstanceID() > this.GetInstanceID())
                 return;
@@ -70,6 +79,7 @@ public class ItemScript : MonoBehaviour {
                 theInv.AddToInventory(result);
             }
         }
+
         //Return to hand
         if (reset)
         {
