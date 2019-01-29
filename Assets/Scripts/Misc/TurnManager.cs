@@ -73,4 +73,9 @@ public class TurnManager : MonoBehaviour {
         }
         biomeList.Clear();
     }
+
+    public void WinGame()
+    {
+        player.WinGame();
+    }
 }

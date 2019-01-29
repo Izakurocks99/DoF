@@ -7,7 +7,7 @@ public enum CardType
     NONE,
     Enemy,
     Obstacle,
-    Shop,
+    BOSS,
     Entry,
     Exit,
 }
@@ -25,6 +25,7 @@ public class CardBase : MonoBehaviour
     //public List<GameObject> enemyTokens;
     public GameObject enemyBase;
     public List<EnemyScriptableObj> enemyTokens;
+    public EnemyScriptableObj bossToken;
     public GameObject biomeBase;
     public List<Biome> biomes;
     public Biome endZone;
@@ -36,6 +37,7 @@ public class CardBase : MonoBehaviour
     {
         flipper = GetComponent<CardFlip>();
         board = FindObjectOfType<LevelGeneration>();
+        enemyTokens = board.GetCurrentLevelEnemies();
     }
 
     // Update is called once per frame
@@ -127,6 +129,15 @@ public class CardBase : MonoBehaviour
                 enemyObj.GetComponent<EnemyCard>().cardSO = enemyTokens[index];
                 enemyObj.GetComponent<EnemyCard>().boardPos = boardIndex;
                 enemyObj.GetComponent<EnemyCard>().board = board;
+                revealed = true;
+                break;
+            case CardType.BOSS:
+                player.inCombat = true;
+                enemyObj = Instantiate(enemyBase, board.BoardToWorldPos(boardIndex), Quaternion.identity);
+                enemyObj.GetComponent<EnemyCard>().cardSO = bossToken;
+                enemyObj.GetComponent<EnemyCard>().boardPos = boardIndex;
+                enemyObj.GetComponent<EnemyCard>().board = board;
+                enemyObj.GetComponent<EnemyCard>().boss = true;
                 revealed = true;
                 break;
             case CardType.Obstacle:

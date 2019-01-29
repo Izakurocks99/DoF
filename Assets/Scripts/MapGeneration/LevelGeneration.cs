@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct LevelEnemies
+{
+    public int level;
+    public List<EnemyScriptableObj> enemyTokens;
+}
+
 public class LevelGeneration : MonoBehaviour
 {
 
@@ -14,6 +21,9 @@ public class LevelGeneration : MonoBehaviour
     int numberOfRooms = 20;
     [SerializeField]
     float cardSpacing = 0.1f;
+
+    public int level = 0;
+    public List<LevelEnemies> enemyLevelList = new List<LevelEnemies>();
 
     public Inventory inventory;
     public GameObject roomObj;
@@ -171,11 +181,7 @@ public class LevelGeneration : MonoBehaviour
             go.GetComponent<Player>().board = this;
             player.gameObject.SetActive(false);
         }
-        else
-        {
-            player.transform.position = GetStartingPos();
-            player.board = this;
-        }
+
         player.boardIndex = Vector2.zero;
 
         foreach (Vector2 room in takenPositions)
@@ -188,13 +194,23 @@ public class LevelGeneration : MonoBehaviour
 
         }
 
+        player.transform.position = GetStartingPos();
+        player.board = this;
+        player.inCombat = false;
         player.gameObject.SetActive(true);
+
         for (int i =0;i < rooms.Count; ++i)
         {
             if (i == 0)
                 rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.Entry);
             else if (i == rooms.Count - 1)
+            {
+                if(level != enemyLevelList.Count -1)
                 rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.Exit);
+                else
+                    rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.BOSS);
+
+            }
             else
                 rooms[i].GetComponent<CardBase>().InitCard(this, takenPositions[i], player, CardType.NONE);
         }
@@ -216,8 +232,9 @@ public class LevelGeneration : MonoBehaviour
         return worldPos;
     }
 
-    public void ResetBoard()
+    public void ResetBoard(int _level)
     {
+        level = _level;
         player.gameObject.SetActive(false);
         foreach (GameObject var in rooms)
         {
@@ -254,5 +271,10 @@ public class LevelGeneration : MonoBehaviour
                 var.GetComponent<CardFlip>().Flip();
             }
         }
+    }
+
+    public List<EnemyScriptableObj> GetCurrentLevelEnemies()
+    {
+        return enemyLevelList[level].enemyTokens;
     }
 }

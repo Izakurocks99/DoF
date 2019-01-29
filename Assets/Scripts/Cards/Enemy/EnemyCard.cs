@@ -16,6 +16,7 @@ public class EnemyCard : MonoBehaviour {
     public TextMeshPro healthPoints;
 
     public int attack, health;
+    public bool boss = false;
 
     TurnManager manager;
 
@@ -51,6 +52,8 @@ public class EnemyCard : MonoBehaviour {
         if (health <= 0)
         {
             manager.RemoveFromList(this);
+            if (boss)
+                manager.WinGame();
         }
         else
         manager.EndTurn();

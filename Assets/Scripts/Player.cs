@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     public float maxManaPoints;
     public float currManaPoints;
 
+    public bool godMode = false;
     public Vector2 boardIndex;
     public bool inCombat;
     public bool dead;
@@ -32,6 +34,11 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     PlayerHand hand;
+
+    [SerializeField]
+    TextMeshPro playerText;
+    [SerializeField]
+    string winText;
 
     // Use this for initialization
     void Start()
@@ -55,7 +62,7 @@ public class Player : MonoBehaviour
 
         if(dead)
         {
-            ModifyHealth(-currHealthPoints);
+            //ModifyHealth(-currHealthPoints);
             if (deadMovePercent < 1)
             {
                 deadMovePercent += Time.deltaTime;
@@ -67,6 +74,8 @@ public class Player : MonoBehaviour
 
     public void ModifyHealth(float value)
     {
+        if (godMode)
+            return;
         currHealthPoints += value;
         if (currHealthPoints > maxHealthPoints)
         {
@@ -151,8 +160,16 @@ public class Player : MonoBehaviour
             //dead = false;
             //gameObject.SetActive(false);
             Destroy(this.gameObject);
-            board.ResetBoard();
+            board.ResetBoard(0);
             board.inventory.ResetInventory();
         }
+    }
+
+    public void WinGame()
+    {
+        dead = true;
+        GetComponent<Rigidbody>().useGravity = false;
+        deadTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        playerText.text = winText;
     }
 }

@@ -32,7 +32,7 @@ public class BiomeScript : MonoBehaviour {
     {
         if(cardSO.dropList.Count == 0)
         {
-            board.ResetBoard();
+            board.ResetBoard(board.level +1);
             return null;
         }
         manager.RemoveFromList(this);
@@ -45,7 +45,7 @@ public class BiomeScript : MonoBehaviour {
         {
             if (cardSO.dropList.Count == 0)
             {
-                board.ResetBoard();
+                board.ResetBoard(board.level +1);
                 return;
             }
 

@@ -956,6 +956,20 @@ MonoBehaviour:
   worldCenter: {x: 4, y: 4}
   numberOfRooms: 20
   cardSpacing: 0.1
+  level: 0
+  enemyLevelList:
+  - level: 0
+    enemyTokens:
+    - {fileID: 11400000, guid: 1bde494ed314a8742a53a2282a921ac2, type: 2}
+  - level: 1
+    enemyTokens:
+    - {fileID: 11400000, guid: 6bbe4ffd27560f34e81b0d6e52c6f22c, type: 2}
+    - {fileID: 11400000, guid: 6fb46de24ed1500418fbf1d73b77f89b, type: 2}
+  - level: 2
+    enemyTokens:
+    - {fileID: 11400000, guid: 6bbe4ffd27560f34e81b0d6e52c6f22c, type: 2}
+    - {fileID: 11400000, guid: 57958c66bd4d59d48906987e11f52f45, type: 2}
+    - {fileID: 11400000, guid: 6fb46de24ed1500418fbf1d73b77f89b, type: 2}
   inventory: {fileID: 1566181372}
   roomObj: {fileID: 1439152583772436, guid: f84e0d92a388407448bec321f318f6d6, type: 2}
   playerPrefab: {fileID: 1842119212442356, guid: c8a044b3265e64e4fa762f87a981acc5,
