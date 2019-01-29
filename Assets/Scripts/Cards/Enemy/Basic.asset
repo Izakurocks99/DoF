@@ -16,3 +16,6 @@ MonoBehaviour:
   art: {fileID: 21300000, guid: 040f65c7f5ffda641a0c686a51316855, type: 3}
   attack: 1
   health: 2
+  dropList:
+  - {fileID: 11400000, guid: 918fc08428888414895c8595ef366386, type: 2}
+  dropPercent: 0.5

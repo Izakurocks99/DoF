@@ -221,7 +221,8 @@ public class LevelGeneration : MonoBehaviour
 
     public Vector2 GetStartingPos()
     {
-        return BoardToWorldPos(takenPositions[0]);
+        //return BoardToWorldPos(takenPositions[0]);
+        return Vector2.zero;
     }
 
     public Vector2 BoardToWorldPos(Vector2 gridPos)

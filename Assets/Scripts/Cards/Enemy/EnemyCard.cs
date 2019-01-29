@@ -52,6 +52,11 @@ public class EnemyCard : MonoBehaviour {
         if (health <= 0)
         {
             manager.RemoveFromList(this);
+            //get drop
+            Item dropped = cardSO.Harvest();
+            if (dropped)
+                board.inventory.AddToInventory(dropped);
+
             if (boss)
                 manager.WinGame();
         }

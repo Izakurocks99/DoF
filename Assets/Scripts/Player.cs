@@ -54,6 +54,12 @@ public class Player : MonoBehaviour
         collisionBox = GetComponent<BoxCollider>();
     }
 
+    private void OnEnable()
+    {
+        if (board)
+            gameObject.transform.position = Vector2.zero;
+    }
+
     // Update is called once per frame
     void Update()
     {

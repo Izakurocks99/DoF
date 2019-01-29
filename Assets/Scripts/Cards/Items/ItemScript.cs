@@ -111,5 +111,11 @@ public class ItemScript : MonoBehaviour {
         {
             theInv.RemoveFromInventory(inventoryIndex);
         }
+        if (Input.GetMouseButtonDown(0) && itembase is Consumable)
+        {
+            Consumable consumable= (Consumable)itembase;
+            consumable.Consume(FindObjectOfType<Player>());
+            theInv.RemoveFromInventory(inventoryIndex);
+        }
     }
 }

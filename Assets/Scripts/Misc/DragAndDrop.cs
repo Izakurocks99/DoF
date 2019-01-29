@@ -25,7 +25,6 @@ public class DragAndDrop : MonoBehaviour
 
     void Update()
     {
-
         //Mouse Button Press Down
         if (Input.GetMouseButtonDown(0))
         {
@@ -56,6 +55,8 @@ public class DragAndDrop : MonoBehaviour
         //Is mouse Moving
         if (isMouseDragging)
         {
+            if (!getTarget)
+                return;
             //tracking mouse position.
             Vector3 currentScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, positionOfScreen.z);
 
