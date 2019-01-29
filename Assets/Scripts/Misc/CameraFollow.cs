@@ -7,10 +7,13 @@ public class CameraFollow : MonoBehaviour {
     GameObject player;
     [SerializeField]
     Vector3 posOffset;
+
+    Vector3 startingPos;
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +25,7 @@ public class CameraFollow : MonoBehaviour {
                 //posOffset = gameObject.transform.position - player.transform.position;
                 Vector3 newPos = player.transform.position + posOffset;
                 gameObject.transform.position = newPos;
+                startingPos = transform.position;
             }
         }
         else
@@ -30,6 +34,10 @@ public class CameraFollow : MonoBehaviour {
             {
                 Vector3 newPos = player.transform.position + posOffset;
                 gameObject.transform.position = new Vector3(newPos.x, newPos.y, gameObject.transform.position.z);
+            }
+            if(!player.activeInHierarchy)
+            {
+                transform.position = startingPos;
             }
         }
 
