@@ -46,6 +46,7 @@ public class DragAndDrop : MonoBehaviour
             if (getTarget)
             {
                 getTarget.GetComponent<Collider>().enabled = true;
+                getTarget.GetComponent<Rigidbody>().isKinematic = false;
                 theCard.reset = true;
             }
             isMouseDragging = false;

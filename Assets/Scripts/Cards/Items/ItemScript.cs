@@ -90,6 +90,7 @@ public class ItemScript : MonoBehaviour {
         //Return to hand
         if (reset)
         {
+            GetComponent<Rigidbody>().isKinematic = true;
             transform.localPosition = inventoryPos;
             reset = false;
         }
