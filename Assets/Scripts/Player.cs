@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
 
         if(dead)
         {
+            GetComponent<Rigidbody>().useGravity = false;
             //ModifyHealth(-currHealthPoints);
             if (deadMovePercent < 1)
             {

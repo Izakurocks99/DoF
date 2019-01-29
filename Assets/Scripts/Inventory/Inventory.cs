@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour {
         //set the size of the hand area
         float scalex = (numSlots/rows) + (numSlots / rows) * cardSpacing + padding * 2;
         float scaley = rows + rows * cardSpacing + padding * 2;
-        this.gameObject.transform.localScale = new Vector3(scalex, scaley, 0.1f);
+        this.gameObject.transform.localScale = new Vector3(scalex, scaley, 0.3f);
 
         Vector3 botLeft = gameObject.transform.localPosition + new Vector3((-scalex+ itemObj.transform.localScale.x )/ 2f, (-scaley+ itemObj.transform.localScale .y)/ 2f, -itemOffset);
         //set the card positions into list
