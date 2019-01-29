@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04bd714cc1187c94ead1c7cefa1a648a, type: 3}
-  m_Name: FallenTrees
+  m_Name: Rocks
   m_EditorClassIdentifier: 
-  art: {fileID: 21300000, guid: 3abd3b28df811444bac40197a6c079b5, type: 3}
-  preferredTool: {fileID: 11400000, guid: f804cf04c7b45b0438e1b6c2ed76320b, type: 2}
+  art: {fileID: 21300000, guid: 18ef863f7e092114ebd5f1d729b78246, type: 3}
+  preferredTool: {fileID: 11400000, guid: fd94515b4fc50ff45867e20e118766ef, type: 2}
   dropList:
-  - {fileID: 11400000, guid: 344a7a3ff14f718438d058442e13e794, type: 2}
-  - {fileID: 11400000, guid: 7d18d78999001774e9d38a261f31f43a, type: 2}
+  - {fileID: 11400000, guid: 39a9344f410f7d147974c7971bbc2317, type: 2}
+  - {fileID: 11400000, guid: 34d1d545010ae4940a70c82e2e7facad, type: 2}
   dropCount: 1
   dropMultiplier: 3

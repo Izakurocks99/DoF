@@ -16,7 +16,7 @@ public class StatBars : MonoBehaviour {
     private void Start()
     {
         healthBar.transform.parent.gameObject.SetActive(false);
-        manaBar.transform.parent.gameObject.SetActive(false);
+        //manaBar.transform.parent.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class StatBars : MonoBehaviour {
         else
         {
             healthBar.transform.parent.gameObject.SetActive(true);
-            manaBar.transform.parent.gameObject.SetActive(true);
+            //manaBar.transform.parent.gameObject.SetActive(true);
             UpdateHealthBar();
             UpdateManaBar();
         }

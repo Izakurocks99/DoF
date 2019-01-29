@@ -44,7 +44,7 @@ public class CardBase : MonoBehaviour
         if (cardType == CardType.Enemy && revealed && !enemyObj)
         {
             cardType = CardType.NONE;
-            player.inCombat = false;
+            //player.inCombat = false;
         }
     }
 
@@ -57,14 +57,22 @@ public class CardBase : MonoBehaviour
         
         if (cardType == CardType.NONE)
         {
-            int index = Random.Range(0, 2);
-            if (index == 1)
+            int index = Random.Range(0, 3);
+            switch (index)
             {
-                cardType = CardType.Enemy;
-            }
-            else
-            {
-                cardType = CardType.Obstacle;
+                case 1:
+                    cardType = CardType.Enemy;
+                    break;
+                case 2:
+                    cardType = CardType.Obstacle;
+                    break;
+                case 3:
+                    cardType = CardType.NONE;
+                    break;
+                default:
+                    cardType = CardType.NONE;
+                    break;
+
             }
         }
 

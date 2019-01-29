@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea802058452cb5b4ea3a4e802042afe3, type: 3}
-  m_Name: Basic
+  m_Name: Strong
   m_EditorClassIdentifier: 
-  cardName: Test
-  description: Harmless lil boi
-  art: {fileID: 21300000, guid: 040f65c7f5ffda641a0c686a51316855, type: 3}
-  attack: 1
-  health: 2
+  cardName: 
+  description: 
+  art: {fileID: 21300000, guid: acdca8f24a786c149a66364ae02c98d1, type: 3}
+  attack: 3
+  health: 4

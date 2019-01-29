@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea802058452cb5b4ea3a4e802042afe3, type: 3}
-  m_Name: Tough
+  m_Name: Rough
   m_EditorClassIdentifier: 
-  cardName: ToughEnemy
+  cardName: 
   description: 
-  art: {fileID: 21300000, guid: b53f3d7b9eb7b43af97f4fbfa685a115, type: 3}
-  attack: 1
-  health: 3
+  art: {fileID: 21300000, guid: a2a05f14c7aeb5a4e9ccc9a58cfbef01, type: 3}
+  attack: 4
+  health: 6

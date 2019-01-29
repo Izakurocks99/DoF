@@ -39,6 +39,9 @@ public class TurnManager : MonoBehaviour {
     {
         enemyList.Remove(enemyCard);
         Destroy(enemyCard.gameObject);
+
+        if (enemyList.Count == 0)
+            player.inCombat = false;
     }
 
     public void RemoveFromList(BiomeScript biomeCard)

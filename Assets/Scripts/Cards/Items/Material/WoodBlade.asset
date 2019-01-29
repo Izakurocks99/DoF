@@ -9,19 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4efc6ba95b698b04a8e72e44319eab87, type: 3}
-  m_Name: Wood
+  m_Name: WoodBlade
   m_EditorClassIdentifier: 
-  cardName: WoodPlanks
+  cardName: 
   description: 
-  type: 1
+  type: 0
   tier: 0
-  art: {fileID: 21300000, guid: 2886a0567e5b153498ccc9d082ec7ca3, type: 3}
-  color: {r: 0.5943396, g: 0.30639496, b: 0.042052325, a: 1}
+  art: {fileID: 21300000, guid: ca720b368805438419aa3867d18ab3ec, type: 3}
+  color: {r: 0.6509434, g: 0.19013593, b: 0, a: 1}
   lifetime: 0
   recipes:
-  - otherMaterial: {fileID: 11400000}
-    result: {fileID: 11400000, guid: 0fe6b1336c52c2040beb16a3216ebc36, type: 2}
   - otherMaterial: {fileID: 11400000, guid: 344a7a3ff14f718438d058442e13e794, type: 2}
-    result: {fileID: 11400000, guid: 502ca81aa5cbe8749ae0595e309c26ed, type: 2}
-  - otherMaterial: {fileID: 11400000, guid: 0fe6b1336c52c2040beb16a3216ebc36, type: 2}
+    result: {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - otherMaterial: {fileID: 11400000, guid: 7d18d78999001774e9d38a261f31f43a, type: 2}
     result: {fileID: 11400000, guid: f804cf04c7b45b0438e1b6c2ed76320b, type: 2}

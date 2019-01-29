@@ -177,4 +177,5 @@ MonoBehaviour:
   biomeBase: {fileID: 1298405352875906, guid: 570246393095e3f4fa7267843ced568a, type: 2}
   biomes:
   - {fileID: 11400000, guid: 649d855001c20e14a88ae8130a84338d, type: 2}
+  - {fileID: 11400000, guid: ad5a9ae3c1e8b894692327ac8aa96d48, type: 2}
   endZone: {fileID: 11400000, guid: 589cd72af8e85564a94820edada6e946, type: 2}

@@ -15,6 +15,15 @@ MonoBehaviour:
   description: 
   type: 1
   tier: 0
-  art: {fileID: 21300000, guid: 3abd3b28df811444bac40197a6c079b5, type: 3}
+  art: {fileID: 21300000, guid: ce1a483ce66cfc84a930276b9ea2b3ed, type: 3}
+  color: {r: 0.7075472, g: 0.35246256, b: 0.056737285, a: 1}
   lifetime: 0
-  recipes: []
+  recipes:
+  - otherMaterial: {fileID: 11400000, guid: 7d18d78999001774e9d38a261f31f43a, type: 2}
+    result: {fileID: 11400000, guid: 502ca81aa5cbe8749ae0595e309c26ed, type: 2}
+  - otherMaterial: {fileID: 11400000, guid: 0fe6b1336c52c2040beb16a3216ebc36, type: 2}
+    result: {fileID: 11400000, guid: 173448b7f6d3b534cb9bdbc6ab5493c8, type: 2}
+  - otherMaterial: {fileID: 11400000, guid: 01b1710cf0b86cc409c9961b9bfbb345, type: 2}
+    result: {fileID: 11400000, guid: b0de602a822003648ba258f3ee61a6fb, type: 2}
+  - otherMaterial: {fileID: 11400000, guid: 34d1d545010ae4940a70c82e2e7facad, type: 2}
+    result: {fileID: 11400000, guid: f30718f8eb2d2e84a8c5ad89afb1caf6, type: 2}

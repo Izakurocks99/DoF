@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3f3bf8850dfee04a917a1e211be2289, type: 3}
-  m_Name: WoodenSword
+  m_Name: Axe
   m_EditorClassIdentifier: 
-  cardName: WoodenSword
-  description: A sword made of wood
-  type: 2
+  cardName: 
+  description: 
+  type: 0
   tier: 0
-  art: {fileID: 21300000, guid: af6cd760135483443b4b815ce60342ac, type: 3}
-  color: {r: 0.6603774, g: 0.20188816, b: 0, a: 1}
-  lifetime: 2
-  damage: 3
+  art: {fileID: 21300000, guid: 1f40bb586a6c98c4b858ae1c732e8da2, type: 3}
+  color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
+  lifetime: 3
+  damage: 2
