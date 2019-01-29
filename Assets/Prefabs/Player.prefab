@@ -223,12 +223,15 @@ MonoBehaviour:
   currHealthPoints: 10
   maxManaPoints: 10
   currManaPoints: 10
+  godMode: 0
   boardIndex: {x: 0, y: 0}
   inCombat: 0
   dead: 0
   deadTransform: {fileID: 0}
   moveSpeed: 3
   hand: {fileID: 0}
+  playerText: {fileID: 114308222860062534}
+  winText: YOU WIN
 --- !u!114 &114308222860062534
 MonoBehaviour:
   m_ObjectHideFlags: 1
