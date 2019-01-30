@@ -62,14 +62,14 @@ public class TurnManager : MonoBehaviour {
     public IEnumerator EndTurn()
     {
         player.isPlayerTurn = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.01f);
         foreach (EnemyCard var in enemyList)
         {
             int attack = var.GetAttack();
             player.ModifyHealth(-attack);
             var.PlayAttackAnim();
             player.PlayDamagedAnim();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
         }
         player.isPlayerTurn = true;
         yield break;

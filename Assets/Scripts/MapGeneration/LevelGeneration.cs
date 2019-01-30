@@ -28,7 +28,7 @@ public class LevelGeneration : MonoBehaviour
     public Inventory inventory;
     public GameObject roomObj;
     public GameObject playerPrefab;
-    Player player;
+    public Player player;
     public TurnManager gameManager;
 
     List<GameObject> rooms = new List<GameObject>();

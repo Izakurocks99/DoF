@@ -115,6 +115,13 @@ public class ItemScript : MonoBehaviour {
             descriptionBox.itemName.text = itembase.cardName;
             descriptionBox.itemDescription.text = itembase.cardDescription;
             descriptionBox.itemType.text = itembase.cardType;
+
+            if(itembase is Weapon)
+            {
+                Weapon weapon = (Weapon)itembase;
+                descriptionBox.weaponDamage.text = "Damage: " + weapon.damage.ToString();
+                descriptionBox.weaponDurability.text = "Durability: " + lifeTime + " / " + weapon.lifetime;
+            }
         }
 
         if (Input.GetMouseButtonDown(1))

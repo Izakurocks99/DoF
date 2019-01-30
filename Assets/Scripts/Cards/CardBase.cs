@@ -90,7 +90,7 @@ public class CardBase : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && board.CheckBesidePlayer(boardIndex) && !player.inCombat)
+        if (Input.GetMouseButtonDown(0) && board.CheckBesidePlayer(boardIndex) && !player.inCombat && player.isPlayerTurn)
         {
             if (!flipper.flipped)
                 flipper.Flip();

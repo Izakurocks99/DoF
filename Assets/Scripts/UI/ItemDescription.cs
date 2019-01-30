@@ -9,6 +9,9 @@ public class ItemDescription : MonoBehaviour {
     public TextMeshProUGUI itemDescription;
     public TextMeshProUGUI itemType;
 
+    public TextMeshProUGUI weaponDamage;
+    public TextMeshProUGUI weaponDurability;
+
     // Use this for initialization
     void Start () {
 		

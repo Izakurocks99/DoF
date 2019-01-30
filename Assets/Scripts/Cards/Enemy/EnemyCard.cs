@@ -45,6 +45,9 @@ public class EnemyCard : MonoBehaviour {
 
     public void OnDamaged(int damage)
     {
+        if (!board.player.isPlayerTurn)
+            return;
+
         health -= damage;
         healthPoints.text = health.ToString();
         //Deals Damage
