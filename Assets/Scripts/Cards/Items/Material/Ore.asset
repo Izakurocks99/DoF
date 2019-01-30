@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efc6ba95b698b04a8e72e44319eab87, type: 3}
   m_Name: Ore
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 0
-  tier: 0
+  cardName: Ore
+  cardDescription: Combining more of this seems useful
+  cardType: Material
   art: {fileID: 21300000, guid: 0e0c988016b6d8542a8fb5fb2bffa75d, type: 3}
   color: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   lifetime: 0

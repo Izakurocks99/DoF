@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efc6ba95b698b04a8e72e44319eab87, type: 3}
   m_Name: Blade
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 0
-  tier: 0
+  cardName: Steel Blade
+  cardDescription: You probably want a handle for this, dont wanna cut yourself!
+  cardType: Material
   art: {fileID: 21300000, guid: ca720b368805438419aa3867d18ab3ec, type: 3}
   color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   lifetime: 0

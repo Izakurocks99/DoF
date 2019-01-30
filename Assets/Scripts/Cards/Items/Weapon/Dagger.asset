@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3bf8850dfee04a917a1e211be2289, type: 3}
   m_Name: Dagger
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 0
-  tier: 0
+  cardName: Dirk
+  cardDescription: Named after the sound people makes after being stabbed by it. "Dirk...
+    arghh"
+  cardType: Weapon
   art: {fileID: 21300000, guid: a59d3f73236e0024e96ed6d008b19bf3, type: 3}
   color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   lifetime: 3

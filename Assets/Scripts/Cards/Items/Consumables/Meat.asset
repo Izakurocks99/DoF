@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f3b6501dfed5d4e9c8c7ea7e21e2ec, type: 3}
   m_Name: Meat
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 4
-  tier: 0
+  cardName: Meat
+  cardDescription: Yummy!
+  cardType: Consumable
   art: {fileID: 21300000, guid: e3251d5600133f3418beed5b43bb2bdc, type: 3}
   color: {r: 0.8018868, g: 0.42116016, b: 0.24586153, a: 1}
   lifetime: 0

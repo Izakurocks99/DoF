@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   cardName: Stick
-  description: 
-  type: 1
-  tier: 0
+  cardDescription: A long wooden stick, feels good to hold
+  cardType: Material
   art: {fileID: 21300000, guid: ce1a483ce66cfc84a930276b9ea2b3ed, type: 3}
   color: {r: 0.7075472, g: 0.35246256, b: 0.056737285, a: 1}
   lifetime: 0

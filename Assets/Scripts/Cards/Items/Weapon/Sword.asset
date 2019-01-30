@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3bf8850dfee04a917a1e211be2289, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 0
-  tier: 0
+  cardName: Steel Sword
+  cardDescription: Good to swing, Good to kill
+  cardType: Weapon
   art: {fileID: 21300000, guid: af6cd760135483443b4b815ce60342ac, type: 3}
   color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   lifetime: 3

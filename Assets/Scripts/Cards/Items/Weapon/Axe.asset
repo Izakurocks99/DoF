@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3bf8850dfee04a917a1e211be2289, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 0
-  tier: 0
+  cardName: Wood Axe
+  cardDescription: Good for chopping wood... and enemies!
+  cardType: Tool
   art: {fileID: 21300000, guid: 1f40bb586a6c98c4b858ae1c732e8da2, type: 3}
   color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   lifetime: 3

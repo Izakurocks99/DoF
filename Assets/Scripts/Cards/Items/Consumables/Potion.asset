@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f3b6501dfed5d4e9c8c7ea7e21e2ec, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
-  type: 4
-  tier: 0
+  cardName: Potion
+  cardDescription: I wonder what it taste like.
+  cardType: Consumable
   art: {fileID: 21300000, guid: dd5c837656f2a34448e8aaf42a88a085, type: 3}
   color: {r: 1, g: 0, b: 0.60395104, a: 1}
   lifetime: 0

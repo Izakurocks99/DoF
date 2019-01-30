@@ -48,6 +48,7 @@ public class EnemyCard : MonoBehaviour {
         if (!board.player.isPlayerTurn)
             return;
 
+        GetComponent<SoundEffects>().PlayRandomSound();
         health -= damage;
         healthPoints.text = health.ToString();
         //Deals Damage

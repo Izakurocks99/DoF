@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Name: WoodDagger
   m_EditorClassIdentifier: 
   cardName: Wooden Dagger
-  description: 
-  type: 2
-  tier: 0
+  cardDescription: A sharp piece of wood, its not dumb as long as it works
+  cardType: Weapon
   art: {fileID: 21300000, guid: a59d3f73236e0024e96ed6d008b19bf3, type: 3}
   color: {r: 0.7169812, g: 0.31293964, b: 0, a: 1}
   lifetime: 2

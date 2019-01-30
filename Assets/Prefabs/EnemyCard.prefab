@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 65486322310536262}
   - component: {fileID: 54542689678703446}
   - component: {fileID: 114540800780067836}
+  - component: {fileID: 114517025045192372}
   m_Layer: 0
   m_Name: EnemyCard
   m_TagString: Enemy
@@ -553,6 +554,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!114 &114517025045192372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372522947529386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e9ed8899dbe3b48b2d274754ce4544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 8300000, guid: 4d70c1a507e463f47a1e3e2a5c259b70, type: 3}
+  - {fileID: 8300000, guid: fee8afce84334dd4ca46b6b8f57a81d9, type: 3}
+  - {fileID: 8300000, guid: 3bdcc325e5f5c34439658ca762fd702a, type: 3}
 --- !u!114 &114540800780067836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -572,6 +588,7 @@ MonoBehaviour:
   healthPoints: {fileID: 114471471300602056}
   attack: 0
   health: 0
+  boss: 0
 --- !u!212 &212098643895573916
 SpriteRenderer:
   m_ObjectHideFlags: 1
