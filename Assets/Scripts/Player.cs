@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     string winText;
 
+    public bool isPlayerTurn = true;
+
     // Use this for initialization
     void Start()
     {
@@ -178,5 +180,15 @@ public class Player : MonoBehaviour
         GetComponent<Rigidbody>().useGravity = false;
         deadTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         playerText.text = winText;
+    }
+
+    public void PlayDamagedAnim()
+    {
+        Debug.Log("Player damaged anim");
+    }
+
+    public void PlayAttackAnim()
+    {
+        Debug.Log("Player attack anim");
     }
 }

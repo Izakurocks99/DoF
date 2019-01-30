@@ -9,6 +9,7 @@ public class ItemScript : MonoBehaviour {
     [SerializeField] Color spriteColor;
     public Vector3 inventoryPos;
     public int inventoryIndex;
+    public ItemDescription descriptionBox;
 
     public bool reset;
     public int lifeTime;
@@ -108,15 +109,30 @@ public class ItemScript : MonoBehaviour {
 
     private void OnMouseOver()
     {
+        if(descriptionBox)
+        {
+            descriptionBox.gameObject.SetActive(true);
+            descriptionBox.itemName.text = itembase.cardName;
+            descriptionBox.itemDescription.text = itembase.cardDescription;
+            descriptionBox.itemType.text = itembase.cardType;
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
+            descriptionBox.gameObject.SetActive(false);
             theInv.RemoveFromInventory(inventoryIndex);
         }
         if (Input.GetMouseButtonDown(0) && itembase is Consumable)
         {
             Consumable consumable= (Consumable)itembase;
             consumable.Consume(FindObjectOfType<Player>());
+            descriptionBox.gameObject.SetActive(false);
             theInv.RemoveFromInventory(inventoryIndex);
         }
+    }
+
+    private void OnMouseExit()
+    {
+        descriptionBox.gameObject.SetActive(false);
     }
 }

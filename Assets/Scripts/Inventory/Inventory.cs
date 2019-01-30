@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour {
     List<Vector3> cardPositions = new List<Vector3>();
     [SerializeField] List<Item> startingItems = new List<Item>();
     [SerializeField] GameObject[] items;
+    [SerializeField] ItemDescription descriptionBox;
 
 	// Use this for initialization
 	void Start () {
@@ -71,6 +72,7 @@ public class Inventory : MonoBehaviour {
         item.transform.parent = this.gameObject.transform.parent;
         item.transform.localPosition = position;
         item.GetComponent<ItemScript>().itembase = _item;
+        item.GetComponent<ItemScript>().descriptionBox = descriptionBox;
         item.GetComponent<ItemScript>().Init(item.transform.localPosition,i,this);
         items[i] = item;
 

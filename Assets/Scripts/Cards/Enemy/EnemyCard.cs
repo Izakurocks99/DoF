@@ -61,7 +61,7 @@ public class EnemyCard : MonoBehaviour {
                 manager.WinGame();
         }
         else
-        manager.EndTurn();
+        StartCoroutine(manager.EndTurn());
     }
 
     public int GetAttack()
@@ -76,5 +76,15 @@ public class EnemyCard : MonoBehaviour {
         {
             OnDamaged(1);
         }
+    }
+
+    public void PlayHitAnim()
+    {
+        Debug.Log("Enemy damaged anim");
+    }
+
+    public void PlayAttackAnim()
+    {
+        Debug.Log("Enemy attack anim");
     }
 }

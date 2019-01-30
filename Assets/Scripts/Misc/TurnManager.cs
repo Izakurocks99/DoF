@@ -50,13 +50,29 @@ public class TurnManager : MonoBehaviour {
         Destroy(biomeCard.gameObject);
     }
 
-    public void EndTurn()
+    //public void EndTurn()
+    //{
+    //    foreach(EnemyCard var in enemyList)
+    //    {
+    //        int attack = var.GetAttack();
+    //        player.ModifyHealth(-attack);
+    //    }
+    //}
+
+    public IEnumerator EndTurn()
     {
-        foreach(EnemyCard var in enemyList)
+        player.isPlayerTurn = false;
+        yield return new WaitForSeconds(0.2f);
+        foreach (EnemyCard var in enemyList)
         {
             int attack = var.GetAttack();
             player.ModifyHealth(-attack);
+            var.PlayAttackAnim();
+            player.PlayDamagedAnim();
+            yield return new WaitForSeconds(0.2f);
         }
+        player.isPlayerTurn = true;
+        yield break;
     }
 
     public void RemoveAll()
