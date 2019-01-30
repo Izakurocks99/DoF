@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
         if (godMode)
             return;
         currHealthPoints += value;
+
         if (currHealthPoints > maxHealthPoints)
         {
             currHealthPoints = maxHealthPoints;
@@ -184,7 +185,7 @@ public class Player : MonoBehaviour
 
     public void PlayDamagedAnim()
     {
-        Debug.Log("Player damaged anim");
+        GetComponentInChildren<SpriteEffects>().PlayDamagedAnim();
     }
 
     public void PlayAttackAnim()

@@ -48,6 +48,7 @@ public class EnemyCard : MonoBehaviour {
         if (!board.player.isPlayerTurn)
             return;
 
+        PlayHitAnim();
         GetComponent<SoundEffects>().PlayRandomSound();
         health -= damage;
         healthPoints.text = health.ToString();
@@ -84,7 +85,7 @@ public class EnemyCard : MonoBehaviour {
 
     public void PlayHitAnim()
     {
-        Debug.Log("Enemy damaged anim");
+        GetComponentInChildren<SpriteEffects>().PlayDamagedAnim();
     }
 
     public void PlayAttackAnim()
