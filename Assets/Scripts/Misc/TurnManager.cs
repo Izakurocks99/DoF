@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class TurnManager : MonoBehaviour {
 
@@ -8,8 +9,23 @@ public class TurnManager : MonoBehaviour {
     List<EnemyCard> enemyList = new List<EnemyCard>();
     List<BiomeScript> biomeList = new List<BiomeScript>();
 
+    bool isStarted;
+    [SerializeField]
+    LevelGeneration levelGenerator;
+    [SerializeField]
+    Inventory inventory;
+    [SerializeField]
+    GameObject startingScreen;
+    [SerializeField]
+    GameObject optionsMenu;
+
+    [SerializeField]
+    AudioMixer audioMixer;
+
     // Use this for initialization
     void Start () {
+        levelGenerator.enabled = false;
+        inventory.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -93,5 +109,34 @@ public class TurnManager : MonoBehaviour {
     public void WinGame()
     {
         player.WinGame();
+    }
+
+    public void StartGame()
+    {
+        startingScreen.SetActive(false);  
+        levelGenerator.enabled = true;
+        inventory.enabled = true;
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        audioMixer.SetFloat("MasterVolume", volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+
+        audioMixer.SetFloat("Music", volume);
+    }
+
+    public void SetSoundVolume(float volume)
+    {
+
+        audioMixer.SetFloat("Sound", volume);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
